@@ -1,0 +1,301 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - heading "鱼盆模型" [level=1] [ref=e6]
+        - generic [ref=e7]: 2026-04-28
+      - generic [ref=e8]:
+        - combobox [ref=e9]:
+          - option "2026-04-28" [selected]
+          - option "2026-04-27"
+          - option "2026-04-24"
+          - option "2026-04-23"
+          - option "2026-04-22"
+          - option "2026-04-21"
+          - option "2026-04-20"
+          - option "2026-04-17"
+          - option "2026-04-16"
+          - option "2026-04-15"
+          - option "2026-04-14"
+          - option "2026-04-13"
+          - option "2026-04-10"
+          - option "2026-04-09"
+          - option "2026-04-08"
+          - option "2026-04-07"
+          - option "2026-04-03"
+          - option "2026-04-02"
+          - option "2026-04-01"
+          - option "2026-03-31"
+          - option "2026-03-30"
+          - option "2026-03-27"
+          - option "2026-03-26"
+          - option "2026-03-25"
+          - option "2026-03-24"
+          - option "2026-03-23"
+          - option "2026-03-20"
+          - option "2026-03-19"
+          - option "2026-03-18"
+          - option "2026-03-17"
+          - option "2026-03-16"
+          - option "2026-03-13"
+          - option "2026-03-12"
+          - option "2026-03-11"
+          - option "2026-03-10"
+          - option "2026-03-09"
+          - option "2026-03-06"
+          - option "2026-03-05"
+          - option "2026-03-04"
+          - option "2026-03-03"
+        - button "刷新" [ref=e10]
+        - button "生成快照" [ref=e11]:
+          - img [ref=e12]
+          - text: 生成快照
+        - generic [ref=e17] [cursor=pointer]:
+          - checkbox "调试模式" [checked] [ref=e18]
+          - text: 调试模式
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - button "指数" [ref=e21]
+        - button "板块" [ref=e22]
+      - generic [ref=e23]:
+        - generic [ref=e24]: 9/9
+        - generic [ref=e25]: YES(100%)
+      - generic [ref=e26]:
+        - generic [ref=e27]: 0/9
+        - generic [ref=e28]: NO(0%)
+      - generic [ref=e29]:
+        - generic [ref=e30]: 最强
+        - generic [ref=e31]: 科创50
+        - generic [ref=e32]: +7.7%
+      - generic [ref=e34]:
+        - generic [ref=e35]: 牛市
+        - generic [ref=e36]: ">60%站上均线"
+    - table [ref=e39]:
+      - rowgroup [ref=e53]:
+        - row "# 名称 状态 涨幅 现价 MA20 偏离度 量比 天数 转变日 区间涨幅 排名变化" [ref=e54]:
+          - columnheader "#" [ref=e55]: "#"
+          - columnheader "名称" [ref=e56]: 名称
+          - columnheader "状态" [ref=e57]: 状态
+          - columnheader "涨幅" [ref=e58]: 涨幅
+          - columnheader "现价" [ref=e59]: 现价
+          - columnheader "MA20" [ref=e60]: MA20
+          - columnheader "偏离度" [ref=e61]: 偏离度
+          - columnheader "量比" [ref=e62]: 量比
+          - columnheader "天数" [ref=e63]: 天数
+          - columnheader "转变日" [ref=e64]: 转变日
+          - columnheader "区间涨幅" [ref=e65]: 区间涨幅
+          - columnheader "排名变化" [ref=e66]
+      - rowgroup [ref=e67]:
+        - row "1 科创50 YES -1.31% 1,488.66 1,382.60 +7.67% 1.07 10 04-08 +10.05% -" [ref=e68]:
+          - cell "1" [ref=e69]
+          - cell "科创50" [ref=e70]:
+            - generic [ref=e71]: 科创50
+          - cell "YES" [ref=e72]
+          - cell "-1.31%" [ref=e73]:
+            - generic [ref=e74]: "-1.31%"
+          - cell "1,488.66" [ref=e75]
+          - cell "1,382.60" [ref=e76]
+          - cell "+7.67%" [ref=e77]:
+            - generic [ref=e78]: +7.67%
+          - cell "1.07" [ref=e79]
+          - cell "10" [ref=e80]
+          - cell "04-08" [ref=e81]
+          - cell "+10.05%" [ref=e82]:
+            - generic [ref=e83]: +10.05%
+          - cell "-" [ref=e84]
+        - row "2 创业板指 YES -1.43% 3,596.71 3,482.13 +3.29% 1.01 10 04-08 +7.44% -" [ref=e85]:
+          - cell "2" [ref=e86]
+          - cell "创业板指" [ref=e87]:
+            - generic [ref=e88]: 创业板指
+          - cell "YES" [ref=e89]
+          - cell "-1.43%" [ref=e90]:
+            - generic [ref=e91]: "-1.43%"
+          - cell "3,596.71" [ref=e92]
+          - cell "3,482.13" [ref=e93]
+          - cell "+3.29%" [ref=e94]:
+            - generic [ref=e95]: +3.29%
+          - cell "1.01" [ref=e96]
+          - cell "10" [ref=e97]
+          - cell "04-08" [ref=e98]
+          - cell "+7.44%" [ref=e99]:
+            - generic [ref=e100]: +7.44%
+          - cell "-" [ref=e101]
+        - row "3 深证成指 YES -1.10% 14,830.46 14,396.86 +3.01% 1.01 10 04-08 +5.61% -" [ref=e102]:
+          - cell "3" [ref=e103]
+          - cell "深证成指" [ref=e104]:
+            - generic [ref=e105]: 深证成指
+          - cell "YES" [ref=e106]
+          - cell "-1.10%" [ref=e107]:
+            - generic [ref=e108]: "-1.10%"
+          - cell "14,830.46" [ref=e109]
+          - cell "14,396.86" [ref=e110]
+          - cell "+3.01%" [ref=e111]:
+            - generic [ref=e112]: +3.01%
+          - cell "1.01" [ref=e113]
+          - cell "10" [ref=e114]
+          - cell "04-08" [ref=e115]
+          - cell "+5.61%" [ref=e116]:
+            - generic [ref=e117]: +5.61%
+          - cell "-" [ref=e118]
+        - row "4 中证500 YES -1.15% 8,203.96 8,018.46 +2.31% 0.99 10 04-08 +3.26% -" [ref=e119]:
+          - cell "4" [ref=e120]
+          - cell "中证500" [ref=e121]:
+            - generic [ref=e122]: 中证500
+          - cell "YES" [ref=e123]
+          - cell "-1.15%" [ref=e124]:
+            - generic [ref=e125]: "-1.15%"
+          - cell "8,203.96" [ref=e126]
+          - cell "8,018.46" [ref=e127]
+          - cell "+2.31%" [ref=e128]:
+            - generic [ref=e129]: +2.31%
+          - cell "0.99" [ref=e130]
+          - cell "10" [ref=e131]
+          - cell "04-08" [ref=e132]
+          - cell "+3.26%" [ref=e133]:
+            - generic [ref=e134]: +3.26%
+          - cell "-" [ref=e135]
+        - row "5 沪深300 YES -0.27% 4,758.21 4,652.13 +2.28% 1.05 10 04-08 +3.54% -2" [ref=e136]:
+          - cell "5" [ref=e137]
+          - cell "沪深300" [ref=e138]:
+            - generic [ref=e139]: 沪深300
+          - cell "YES" [ref=e140]
+          - cell "-0.27%" [ref=e141]:
+            - generic [ref=e142]: "-0.27%"
+          - cell "4,758.21" [ref=e143]
+          - cell "4,652.13" [ref=e144]
+          - cell "+2.28%" [ref=e145]:
+            - generic [ref=e146]: +2.28%
+          - cell "1.05" [ref=e147]
+          - cell "10" [ref=e148]
+          - cell "04-08" [ref=e149]
+          - cell "+3.54%" [ref=e150]:
+            - generic [ref=e151]: +3.54%
+          - cell "-2" [ref=e152]
+        - row "6 中证全指 YES -0.79% 6,246.71 6,121.95 +2.04% 1.00 10 04-08 +3.09% -" [ref=e153]:
+          - cell "6" [ref=e154]
+          - cell "中证全指" [ref=e155]:
+            - generic [ref=e156]: 中证全指
+          - cell "YES" [ref=e157]
+          - cell "-0.79%" [ref=e158]:
+            - generic [ref=e159]: "-0.79%"
+          - cell "6,246.71" [ref=e160]
+          - cell "6,121.95" [ref=e161]
+          - cell "+2.04%" [ref=e162]:
+            - generic [ref=e163]: +2.04%
+          - cell "1.00" [ref=e164]
+          - cell "10" [ref=e165]
+          - cell "04-08" [ref=e166]
+          - cell "+3.09%" [ref=e167]:
+            - generic [ref=e168]: +3.09%
+          - cell "-" [ref=e169]
+        - row "7 中证1000 YES -1.34% 8,226.69 8,063.25 +2.03% 0.98 10 04-08 +3.41% +2" [ref=e170]:
+          - cell "7" [ref=e171]
+          - cell "中证1000" [ref=e172]:
+            - generic [ref=e173]: 中证1000
+          - cell "YES" [ref=e174]
+          - cell "-1.34%" [ref=e175]:
+            - generic [ref=e176]: "-1.34%"
+          - cell "8,226.69" [ref=e177]
+          - cell "8,063.25" [ref=e178]
+          - cell "+2.03%" [ref=e179]:
+            - generic [ref=e180]: +2.03%
+          - cell "0.98" [ref=e181]
+          - cell "10" [ref=e182]
+          - cell "04-08" [ref=e183]
+          - cell "+3.41%" [ref=e184]:
+            - generic [ref=e185]: +3.41%
+          - cell "+2" [ref=e186]
+        - row "8 上证指数 YES -0.19% 4,078.64 4,011.92 +1.66% 0.99 10 04-08 +2.09% -" [ref=e187]:
+          - cell "8" [ref=e188]
+          - cell "上证指数" [ref=e189]:
+            - generic [ref=e190]: 上证指数
+          - cell "YES" [ref=e191]
+          - cell "-0.19%" [ref=e192]:
+            - generic [ref=e193]: "-0.19%"
+          - cell "4,078.64" [ref=e194]
+          - cell "4,011.92" [ref=e195]
+          - cell "+1.66%" [ref=e196]:
+            - generic [ref=e197]: +1.66%
+          - cell "0.99" [ref=e198]
+          - cell "10" [ref=e199]
+          - cell "04-08" [ref=e200]
+          - cell "+2.09%" [ref=e201]:
+            - generic [ref=e202]: +2.09%
+          - cell "-" [ref=e203]
+        - row "9 上证50 YES +0.39% 2,950.42 2,903.91 +1.60% 1.06 10 04-08 +1.49% -" [ref=e204]:
+          - cell "9" [ref=e205]
+          - cell "上证50" [ref=e206]:
+            - generic [ref=e207]: 上证50
+          - cell "YES" [ref=e208]
+          - cell "+0.39%" [ref=e209]:
+            - generic [ref=e210]: +0.39%
+          - cell "2,950.42" [ref=e211]
+          - cell "2,903.91" [ref=e212]
+          - cell "+1.60%" [ref=e213]:
+            - generic [ref=e214]: +1.60%
+          - cell "1.06" [ref=e215]
+          - cell "10" [ref=e216]
+          - cell "04-08" [ref=e217]
+          - cell "+1.49%" [ref=e218]:
+            - generic [ref=e219]: +1.49%
+          - cell "-" [ref=e220]
+    - generic [ref=e221]:
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - generic [ref=e224]:
+            - generic [ref=e227]: KDJ · 中证全指
+            - generic [ref=e228]:
+              - generic [ref=e229]: 中性区域
+              - generic [ref=e230]: ·
+              - generic [ref=e231]: 继续观察
+          - generic [ref=e232]:
+            - generic [ref=e233]:
+              - generic [ref=e234]: J
+              - generic [ref=e235]: "37.8"
+            - generic [ref=e236]:
+              - generic [ref=e237]: K
+              - generic [ref=e238]: "64.3"
+            - generic [ref=e239]:
+              - generic [ref=e240]: D
+              - generic [ref=e241]: "77.6"
+        - generic [ref=e242]:
+          - generic [ref=e243]: "-20"
+          - generic [ref=e250]: "120"
+      - application [ref=e254]:
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - generic [ref=e272]: 03-17
+            - generic [ref=e274]: 03-18
+            - generic [ref=e276]: 03-19
+            - generic [ref=e278]: 03-20
+            - generic [ref=e280]: 03-23
+            - generic [ref=e282]: 03-24
+            - generic [ref=e284]: 03-25
+            - generic [ref=e286]: 03-26
+            - generic [ref=e288]: 03-27
+            - generic [ref=e290]: 03-30
+            - generic [ref=e292]: 03-31
+            - generic [ref=e294]: 04-01
+            - generic [ref=e296]: 04-02
+            - generic [ref=e298]: 04-03
+            - generic [ref=e300]: 04-07
+            - generic [ref=e302]: 04-08
+            - generic [ref=e304]: 04-09
+            - generic [ref=e306]: 04-10
+            - generic [ref=e308]: 04-13
+            - generic [ref=e310]: 04-14
+            - generic [ref=e312]: 04-15
+            - generic [ref=e314]: 04-16
+            - generic [ref=e316]: 04-17
+            - generic [ref=e318]: 04-20
+            - generic [ref=e320]: 04-21
+            - generic [ref=e322]: 04-22
+            - generic [ref=e324]: 04-23
+            - generic [ref=e326]: 04-24
+            - generic [ref=e328]: 04-27
+            - generic [ref=e330]: 04-28
+          - generic [ref=e331]:
+            - generic [ref=e333]: "20"
+            - generic [ref=e335]: "50"
+            - generic [ref=e337]: "100"
+  - generic [ref=e338]: "0"

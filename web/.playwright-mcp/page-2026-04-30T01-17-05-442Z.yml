@@ -1,0 +1,370 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - heading "鱼盆模型" [level=1] [ref=e6]
+        - generic [ref=e7]: 2026-04-28
+      - generic [ref=e8]:
+        - combobox [ref=e9]:
+          - option "2026-04-29"
+          - option "2026-04-28" [selected]
+          - option "2026-04-27"
+          - option "2026-04-24"
+          - option "2026-04-23"
+          - option "2026-04-22"
+          - option "2026-04-21"
+          - option "2026-04-20"
+          - option "2026-04-17"
+          - option "2026-04-16"
+          - option "2026-04-15"
+          - option "2026-04-14"
+          - option "2026-04-13"
+          - option "2026-04-10"
+          - option "2026-04-09"
+          - option "2026-04-08"
+          - option "2026-04-07"
+          - option "2026-04-03"
+          - option "2026-04-02"
+          - option "2026-04-01"
+          - option "2026-03-31"
+          - option "2026-03-30"
+          - option "2026-03-27"
+          - option "2026-03-26"
+          - option "2026-03-25"
+          - option "2026-03-24"
+          - option "2026-03-23"
+          - option "2026-03-20"
+          - option "2026-03-19"
+          - option "2026-03-18"
+          - option "2026-03-17"
+          - option "2026-03-16"
+          - option "2026-03-13"
+          - option "2026-03-12"
+          - option "2026-03-11"
+          - option "2026-03-10"
+          - option "2026-03-09"
+          - option "2026-03-06"
+          - option "2026-03-05"
+          - option "2026-03-04"
+          - option "2026-03-03"
+        - button "刷新" [ref=e338]
+        - button "生成快照" [ref=e10]:
+          - img [ref=e11]
+          - text: 生成快照
+        - generic [ref=e16] [cursor=pointer]:
+          - checkbox "调试模式" [checked] [ref=e17]
+          - text: 调试模式
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - button "指数" [ref=e20]
+        - button "板块" [active] [ref=e21]
+      - generic [ref=e22]:
+        - generic [ref=e23]: 10/13
+        - generic [ref=e24]: YES(77%)
+      - generic [ref=e25]:
+        - generic [ref=e26]: 3/13
+        - generic [ref=e27]: NO(23%)
+      - generic [ref=e28]:
+        - generic [ref=e29]: 最强
+        - generic [ref=e30]: 半导体
+        - generic [ref=e31]: +9.5%
+      - generic [ref=e33]:
+        - generic [ref=e34]: 牛市
+        - generic [ref=e35]: ">60%站上均线"
+    - table [ref=e38]:
+      - rowgroup [ref=e52]:
+        - row "# 名称 状态 涨幅 现价 MA20 偏离度 量比 天数 转变日 区间涨幅 排名变化" [ref=e53]:
+          - columnheader "#" [ref=e54]: "#"
+          - columnheader "名称" [ref=e55]: 名称
+          - columnheader "状态" [ref=e56]: 状态
+          - columnheader "涨幅" [ref=e57]: 涨幅
+          - columnheader "现价" [ref=e58]: 现价
+          - columnheader "MA20" [ref=e59]: MA20
+          - columnheader "偏离度" [ref=e60]: 偏离度
+          - columnheader "量比" [ref=e61]: 量比
+          - columnheader "天数" [ref=e62]: 天数
+          - columnheader "转变日" [ref=e63]: 转变日
+          - columnheader "区间涨幅" [ref=e64]: 区间涨幅
+          - columnheader "排名变化" [ref=e65]
+      - rowgroup [ref=e66]:
+        - row "1 半导体 YES -1.14% 8,445.21 7,712.80 +9.50% 1.07 10 04-08 +13.21% -" [ref=e341]:
+          - cell "1" [ref=e342]
+          - cell "半导体" [ref=e343]:
+            - generic [ref=e344]: 半导体
+          - cell "YES" [ref=e345]
+          - cell "-1.14%" [ref=e346]:
+            - generic [ref=e347]: "-1.14%"
+          - cell "8,445.21" [ref=e348]
+          - cell "7,712.80" [ref=e349]
+          - cell "+9.50%" [ref=e350]:
+            - generic [ref=e351]: +9.50%
+          - cell "1.07" [ref=e352]
+          - cell "10" [ref=e353]
+          - cell "04-08" [ref=e354]
+          - cell "+13.21%" [ref=e355]:
+            - generic [ref=e356]: +13.21%
+          - cell "-" [ref=e357]
+        - row "2 中证煤炭 YES +3.59% 2,496.22 2,332.86 +7.00% 1.17 10 04-23 +4.18% -2" [ref=e358]:
+          - cell "2" [ref=e359]
+          - cell "中证煤炭" [ref=e360]:
+            - generic [ref=e361]: 中证煤炭
+          - cell "YES" [ref=e362]
+          - cell "+3.59%" [ref=e363]:
+            - generic [ref=e364]: +3.59%
+          - cell "2,496.22" [ref=e365]
+          - cell "2,332.86" [ref=e366]
+          - cell "+7.00%" [ref=e367]:
+            - generic [ref=e368]: +7.00%
+          - cell "1.17" [ref=e369]
+          - cell "10" [ref=e370]
+          - cell "04-23" [ref=e371]
+          - cell "+4.18%" [ref=e372]:
+            - generic [ref=e373]: +4.18%
+          - cell "-2" [ref=e374]
+        - row "3 细分化工 YES -0.06% 4,295.61 4,167.44 +3.08% 1.05 10 04-08 +2.96% -2" [ref=e375]:
+          - cell "3" [ref=e376]
+          - cell "细分化工" [ref=e377]:
+            - generic [ref=e378]: 细分化工
+          - cell "YES" [ref=e379]
+          - cell "-0.06%" [ref=e380]:
+            - generic [ref=e381]: "-0.06%"
+          - cell "4,295.61" [ref=e382]
+          - cell "4,167.44" [ref=e383]
+          - cell "+3.08%" [ref=e384]:
+            - generic [ref=e385]: +3.08%
+          - cell "1.05" [ref=e386]
+          - cell "10" [ref=e387]
+          - cell "04-08" [ref=e388]
+          - cell "+2.96%" [ref=e389]:
+            - generic [ref=e390]: +2.96%
+          - cell "-2" [ref=e391]
+        - row "4 商业航天 YES -3.64% 35,705.78 34,682.57 +2.95% 0.60 10 04-14 +4.18% +2" [ref=e392]:
+          - cell "4" [ref=e393]
+          - cell "商业航天" [ref=e394]:
+            - generic [ref=e395]: 商业航天
+          - cell "YES" [ref=e396]
+          - cell "-3.64%" [ref=e397]:
+            - generic [ref=e398]: "-3.64%"
+          - cell "35,705.78" [ref=e399]
+          - cell "34,682.57" [ref=e400]
+          - cell "+2.95%" [ref=e401]:
+            - generic [ref=e402]: +2.95%
+          - cell "0.60" [ref=e403]
+          - cell "10" [ref=e404]
+          - cell "04-14" [ref=e405]
+          - cell "+4.18%" [ref=e406]:
+            - generic [ref=e407]: +4.18%
+          - cell "+2" [ref=e408]
+        - row "5 新能源 YES -1.33% 2,848.65 2,772.08 +2.76% 1.01 10 04-13 +2.49% +2" [ref=e409]:
+          - cell "5" [ref=e410]
+          - cell "新能源" [ref=e411]:
+            - generic [ref=e412]: 新能源
+          - cell "YES" [ref=e413]
+          - cell "-1.33%" [ref=e414]:
+            - generic [ref=e415]: "-1.33%"
+          - cell "2,848.65" [ref=e416]
+          - cell "2,772.08" [ref=e417]
+          - cell "+2.76%" [ref=e418]:
+            - generic [ref=e419]: +2.76%
+          - cell "1.01" [ref=e420]
+          - cell "10" [ref=e421]
+          - cell "04-13" [ref=e422]
+          - cell "+2.49%" [ref=e423]:
+            - generic [ref=e424]: +2.49%
+          - cell "+2" [ref=e425]
+        - row "6 有色金属 YES -0.15% 3,671.03 3,594.75 +2.12% 1.26 10 12-03 +2.42% -" [ref=e426]:
+          - cell "6" [ref=e427]
+          - cell "有色金属" [ref=e428]:
+            - generic [ref=e429]: 有色金属
+          - cell "YES" [ref=e430]
+          - cell "-0.15%" [ref=e431]:
+            - generic [ref=e432]: "-0.15%"
+          - cell "3,671.03" [ref=e433]
+          - cell "3,594.75" [ref=e434]
+          - cell "+2.12%" [ref=e435]:
+            - generic [ref=e436]: +2.12%
+          - cell "1.26" [ref=e437]
+          - cell "10" [ref=e438]
+          - cell "12-03" [ref=e439]
+          - cell "+2.42%" [ref=e440]:
+            - generic [ref=e441]: +2.42%
+          - cell "-" [ref=e442]
+        - row "7 中证红利 YES +1.13% 5,828.88 5,726.23 +1.79% 1.18 10 04-21 +1.32% -2" [ref=e443]:
+          - cell "7" [ref=e444]
+          - cell "中证红利" [ref=e445]:
+            - generic [ref=e446]: 中证红利
+          - cell "YES" [ref=e447]
+          - cell "+1.13%" [ref=e448]:
+            - generic [ref=e449]: +1.13%
+          - cell "5,828.88" [ref=e450]
+          - cell "5,726.23" [ref=e451]
+          - cell "+1.79%" [ref=e452]:
+            - generic [ref=e453]: +1.79%
+          - cell "1.18" [ref=e454]
+          - cell "10" [ref=e455]
+          - cell "04-21" [ref=e456]
+          - cell "+1.32%" [ref=e457]:
+            - generic [ref=e458]: +1.32%
+          - cell "-2" [ref=e459]
+        - row "8 房地产 YES +0.39% 2,765.33 2,726.30 +1.43% 1.12 10 04-14 -0.68% -" [ref=e460]:
+          - cell "8" [ref=e461]
+          - cell "房地产" [ref=e462]:
+            - generic [ref=e463]: 房地产
+          - cell "YES" [ref=e464]
+          - cell "+0.39%" [ref=e465]:
+            - generic [ref=e466]: +0.39%
+          - cell "2,765.33" [ref=e467]
+          - cell "2,726.30" [ref=e468]
+          - cell "+1.43%" [ref=e469]:
+            - generic [ref=e470]: +1.43%
+          - cell "1.12" [ref=e471]
+          - cell "10" [ref=e472]
+          - cell "04-14" [ref=e473]
+          - cell "-0.68%" [ref=e474]:
+            - generic [ref=e475]: "-0.68%"
+          - cell "-" [ref=e476]
+        - row "9 证券公司 YES +1.21% 752.02 742.92 +1.23% 1.52 10 04-10 +0.14% -2" [ref=e477]:
+          - cell "9" [ref=e478]
+          - cell "证券公司" [ref=e479]:
+            - generic [ref=e480]: 证券公司
+          - cell "YES" [ref=e481]
+          - cell "+1.21%" [ref=e482]:
+            - generic [ref=e483]: +1.21%
+          - cell "752.02" [ref=e484]
+          - cell "742.92" [ref=e485]
+          - cell "+1.23%" [ref=e486]:
+            - generic [ref=e487]: +1.23%
+          - cell "1.52" [ref=e488]
+          - cell "10" [ref=e489]
+          - cell "04-10" [ref=e490]
+          - cell "+0.14%" [ref=e491]:
+            - generic [ref=e492]: +0.14%
+          - cell "-2" [ref=e493]
+        - row "10 中证医疗 YES +1.73% 6,750.38 6,682.69 +1.01% 1.20 1 04-28 +0.00% -2" [ref=e494]:
+          - cell "10" [ref=e495]
+          - cell "中证医疗" [ref=e496]:
+            - generic [ref=e497]: 中证医疗
+          - cell "YES" [ref=e498]
+          - cell "+1.73%" [ref=e499]:
+            - generic [ref=e500]: +1.73%
+          - cell "6,750.38" [ref=e501]
+          - cell "6,682.69" [ref=e502]
+          - cell "+1.01%" [ref=e503]:
+            - generic [ref=e504]: +1.01%
+          - cell "1.20" [ref=e505]
+          - cell "1" [ref=e506]
+          - cell "04-28" [ref=e507]
+          - cell "+0.00%" [ref=e508]:
+            - generic [ref=e509]: +0.00%
+          - cell "-2" [ref=e510]
+        - row "11 电网设备 NO -1.29% 6,581.63 6,617.65 -0.54% 0.90 1 04-28 +0.00% +4" [ref=e511]:
+          - cell "11" [ref=e512]
+          - cell "电网设备" [ref=e513]:
+            - generic [ref=e514]: 电网设备
+          - cell "NO" [ref=e515]
+          - cell "-1.29%" [ref=e516]:
+            - generic [ref=e517]: "-1.29%"
+          - cell "6,581.63" [ref=e518]
+          - cell "6,617.65" [ref=e519]
+          - cell "-0.54%" [ref=e520]:
+            - generic [ref=e521]: "-0.54%"
+          - cell "0.90" [ref=e522]
+          - cell "1" [ref=e523]
+          - cell "04-28" [ref=e524]
+          - cell "+0.00%" [ref=e525]:
+            - generic [ref=e526]: +0.00%
+          - cell "+4" [ref=e527]
+        - row "12 光伏设备 NO -1.56% 6,725.50 6,847.66 -1.78% 0.88 1 04-27 -1.56% +2" [ref=e528]:
+          - cell "12" [ref=e529]
+          - cell "光伏设备" [ref=e530]:
+            - generic [ref=e531]: 光伏设备
+          - cell "NO" [ref=e532]
+          - cell "-1.56%" [ref=e533]:
+            - generic [ref=e534]: "-1.56%"
+          - cell "6,725.50" [ref=e535]
+          - cell "6,847.66" [ref=e536]
+          - cell "-1.78%" [ref=e537]:
+            - generic [ref=e538]: "-1.78%"
+          - cell "0.88" [ref=e539]
+          - cell "1" [ref=e540]
+          - cell "04-27" [ref=e541]
+          - cell "-1.56%" [ref=e542]:
+            - generic [ref=e543]: "-1.56%"
+          - cell "+2" [ref=e544]
+        - row "13 港股创新药 NO +0.26% 1,337.97 1,378.21 -2.92% 1.01 10 04-23 +0.09% -" [ref=e545]:
+          - cell "13" [ref=e546]
+          - cell "港股创新药" [ref=e547]:
+            - generic [ref=e548]: 港股创新药
+          - cell "NO" [ref=e549]
+          - cell "+0.26%" [ref=e550]:
+            - generic [ref=e551]: +0.26%
+          - cell "1,337.97" [ref=e552]
+          - cell "1,378.21" [ref=e553]
+          - cell "-2.92%" [ref=e554]:
+            - generic [ref=e555]: "-2.92%"
+          - cell "1.01" [ref=e556]
+          - cell "10" [ref=e557]
+          - cell "04-23" [ref=e558]
+          - cell "+0.09%" [ref=e559]:
+            - generic [ref=e560]: +0.09%
+          - cell "-" [ref=e561]
+    - generic [ref=e220]:
+      - generic [ref=e221]:
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - generic [ref=e226]: KDJ · 中证全指
+            - generic [ref=e227]:
+              - generic [ref=e228]: 中性区域
+              - generic [ref=e229]: ·
+              - generic [ref=e230]: 继续观察
+          - generic [ref=e231]:
+            - generic [ref=e232]:
+              - generic [ref=e233]: J
+              - generic [ref=e234]: "37.8"
+            - generic [ref=e235]:
+              - generic [ref=e236]: K
+              - generic [ref=e237]: "64.3"
+            - generic [ref=e238]:
+              - generic [ref=e239]: D
+              - generic [ref=e240]: "77.6"
+        - generic [ref=e241]:
+          - generic [ref=e242]: "-20"
+          - generic [ref=e249]: "120"
+      - application [ref=e253]:
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - generic [ref=e271]: 03-17
+            - generic [ref=e273]: 03-18
+            - generic [ref=e275]: 03-19
+            - generic [ref=e277]: 03-20
+            - generic [ref=e279]: 03-23
+            - generic [ref=e281]: 03-24
+            - generic [ref=e283]: 03-25
+            - generic [ref=e285]: 03-26
+            - generic [ref=e287]: 03-27
+            - generic [ref=e289]: 03-30
+            - generic [ref=e291]: 03-31
+            - generic [ref=e293]: 04-01
+            - generic [ref=e295]: 04-02
+            - generic [ref=e297]: 04-03
+            - generic [ref=e299]: 04-07
+            - generic [ref=e301]: 04-08
+            - generic [ref=e303]: 04-09
+            - generic [ref=e305]: 04-10
+            - generic [ref=e307]: 04-13
+            - generic [ref=e309]: 04-14
+            - generic [ref=e311]: 04-15
+            - generic [ref=e313]: 04-16
+            - generic [ref=e315]: 04-17
+            - generic [ref=e317]: 04-20
+            - generic [ref=e319]: 04-21
+            - generic [ref=e321]: 04-22
+            - generic [ref=e323]: 04-23
+            - generic [ref=e325]: 04-24
+            - generic [ref=e327]: 04-27
+            - generic [ref=e329]: 04-28
+          - generic [ref=e330]:
+            - generic [ref=e332]: "20"
+            - generic [ref=e334]: "50"
+            - generic [ref=e336]: "100"
+  - generic [ref=e337]: "0"

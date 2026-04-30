@@ -1,0 +1,27 @@
+﻿date,code,name,market,provided_close,provided_change_pct,source,symbol,api_close,api_change_pct,close_diff,change_pct_diff,close_match,change_pct_match,status,error,raw_source
+2026-03-31,SPY,标普500ETF,global,650.0,2.91,yfinance,SPY,,,,,False,False,error,SPY returned empty history,
+2026-03-31,QQQ,纳指100ETF,global,577.0,3.41,yfinance,QQQ,,,,,False,False,error,QQQ returned empty history,
+2026-03-31,HSI,恒生指数,hk,24788.0,0.15,hk_sina,HSI,24788.14,0.15,0.14,0.0,True,True,ok,,HSI
+2026-03-31,HSCEI,国企指数,hk,8374.0,-0.3,hk_sina,HSCEI,8374.3,-0.3,0.3,0.0,True,True,ok,,HSCEI
+2026-03-31,N225,日经225,jp,51063.0,-1.58,yfinance,^N225,,,,,False,False,error,^N225 returned empty history,
+2026-03-31,399006,创业板指,cn_index,3184.0,-2.7,ak_tx,sz399006,3184.95,-2.7,0.95,0.0,True,True,ok,,sz399006
+2026-03-31,399300,沪深300,cn_index,4450.0,-0.93,ak_tx,sh000300,4450.05,-0.93,0.05,0.0,True,True,ok,,sh000300
+2026-03-31,1B0016,上证50,cn_index,2826.0,-0.25,ak_tx,sh000016,2826.12,-0.25,0.12,0.0,True,True,ok,,sh000016
+2026-03-31,000510,中证A500,cn_index,5526.0,-1.2,csindex,000510,5526.73,-1.21,0.73,-0.01,True,True,ok,,000510
+2026-03-31,932000,中证2000,cn_index,3242.0,-1.67,csindex,932000,3242.22,-1.67,0.22,0.0,True,True,ok,,932000
+2026-03-31,1B0852,中证1000,cn_index,7619.0,-1.91,csindex,000852,7619.85,-1.91,0.85,0.0,True,True,ok,,000852
+2026-03-31,399905,中证500,cn_index,7617.0,-1.76,csindex,000905,7617.33,-1.76,0.33,0.0,True,True,ok,,000905
+2026-03-31,1B0688,科创50,cn_index,1347.0,-2.59,ak_tx,sh000688,1256.33,-2.59,-90.67,0.0,False,True,ok,,sh000688
+2026-03-31,399989,中证医疗,cn_index,6562.0,-0.04,ak_tx,sz399989,6562.33,-0.04,0.33,0.0,True,True,ok,,sz399989
+2026-03-31,000922,中证红利,cn_index,5727.0,-1.17,csindex,000922,5727.85,-1.17,0.85,0.0,True,True,ok,,000922
+2026-03-31,399998,中证煤炭,cn_index,2342.0,-3.96,ak_tx,sz399998,2342.55,-3.96,0.55,0.0,True,True,ok,,sz399998
+2026-03-31,399941,新能源,cn_index,2708.0,-3.56,csindex,399941,,,,,False,False,error,"Length mismatch: Expected axis has 0 elements, new values have 16 elements",
+2026-03-31,000813,细分化工,ths,4013.0,-2.75,ths,细分化工,,,,,False,False,error,'细分化工',
+2026-03-31,886078,商业航天,ths,2249.0,-0.99,ths,商业航天,2249.04,-0.99,0.04,0.0,True,True,ok,,concept:商业航天
+2026-03-31,931775,房地产,ths,2844.0,-1.13,ths,房地产,1816.14,-1.2,-1027.86,-0.07,False,True,ok,,industry:房地产
+2026-03-31,399975,证券公司,ths,722.0,-0.8,ths,证券公司,,,,,False,False,error,'证券公司',
+2026-03-31,1B0819,有色金属,ths,9616.0,-1.47,ths,有色金属,,,,,False,False,error,'有色金属',
+2026-03-31,881121,半导体,ths,1234.0,-2.95,ths,半导体,12341.13,-2.95,11107.13,0.0,False,True,ok,,industry:半导体
+2026-03-31,H30590,机器人,ths,1721.0,-1.03,ths,机器人,,,,,False,False,error,'机器人',
+2026-03-31,881278,电网设备,ths,7192.0,-1.48,ths,电网设备,7192.12,-1.48,0.12,0.0,True,True,ok,,industry:电网设备
+2026-03-31,881279,光伏设备,ths,9151.0,-3.31,ths,光伏设备,9151.91,-3.31,0.91,0.0,True,True,ok,,industry:光伏设备

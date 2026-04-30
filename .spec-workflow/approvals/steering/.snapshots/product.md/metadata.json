@@ -1,0 +1,14 @@
+{
+  "filePath": ".spec-workflow/steering/product.md",
+  "currentVersion": 1,
+  "snapshots": [
+    {
+      "version": 1,
+      "filename": "snapshot-001.json",
+      "timestamp": "2026-03-20T11:37:10.976Z",
+      "trigger": "initial",
+      "approvalId": "approval_1774006630967_ui1f9507m",
+      "approvalTitle": "Product Overview - 鱼盆模型产品概述文档"
+    }
+  ]
+}

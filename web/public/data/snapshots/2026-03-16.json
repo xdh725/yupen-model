@@ -1,0 +1,111 @@
+{
+  "date": "2026-03-16",
+  "generatedAt": "2026-04-02T15:34:20",
+  "count": 8,
+  "indices": [
+    {
+      "id": "sz399006",
+      "code": "399006.SZ",
+      "name": "创业板指",
+      "currentPrice": 3357.02,
+      "ma20": 3291.19,
+      "threshold": 3291.19,
+      "status": "YES",
+      "deviation": 2.0,
+      "strength": 1,
+      "duration": 1,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sz399001",
+      "code": "399001.SZ",
+      "name": "深证成指",
+      "currentPrice": 14307.58,
+      "ma20": 14262.36,
+      "threshold": 14262.36,
+      "status": "YES",
+      "deviation": 0.32,
+      "strength": 2,
+      "duration": 1,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sh000300",
+      "code": "000300.SH",
+      "name": "沪深300",
+      "currentPrice": 4671.56,
+      "ma20": 4686.82,
+      "threshold": 4686.82,
+      "status": "NO",
+      "deviation": -0.33,
+      "strength": 3,
+      "duration": 2,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sh000001",
+      "code": "000001.SH",
+      "name": "上证指数",
+      "currentPrice": 4084.79,
+      "ma20": 4122.83,
+      "threshold": 4122.83,
+      "status": "NO",
+      "deviation": -0.92,
+      "strength": 4,
+      "duration": 2,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sh000852",
+      "code": "000852.SH",
+      "name": "中证1000",
+      "currentPrice": 8211.35,
+      "ma20": 8291.69,
+      "threshold": 8291.69,
+      "status": "NO",
+      "deviation": -0.97,
+      "strength": 5,
+      "duration": 2,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sh000016",
+      "code": "000016.SH",
+      "name": "上证50",
+      "currentPrice": 2954.09,
+      "ma20": 3018.56,
+      "threshold": 3018.56,
+      "status": "NO",
+      "deviation": -2.14,
+      "strength": 6,
+      "duration": 2,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sh000905",
+      "code": "000905.SH",
+      "name": "中证500",
+      "currentPrice": 8185.15,
+      "ma20": 8376.94,
+      "threshold": 8376.94,
+      "status": "NO",
+      "deviation": -2.29,
+      "strength": 7,
+      "duration": 2,
+      "updatedAt": "2026-03-16"
+    },
+    {
+      "id": "sh000688",
+      "code": "000688.SH",
+      "name": "科创50",
+      "currentPrice": 1384.99,
+      "ma20": 1432.87,
+      "threshold": 1432.87,
+      "status": "NO",
+      "deviation": -3.34,
+      "strength": 8,
+      "duration": 2,
+      "updatedAt": "2026-03-16"
+    }
+  ]
+}
