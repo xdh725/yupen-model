@@ -35,6 +35,7 @@ __pycache__/
 .windsurf/
 .playwright-mcp/
 .spec-workflow/
+.github/prompts/ui-ux-pro-max/
 
 # Logs
 *.log
