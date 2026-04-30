@@ -19,5 +19,22 @@ __pycache__/
 .vscode/
 .idea/
 
+# AI tool configs
+.claude/
+.agent/
+.codebuddy/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.kiro/
+.opencode/
+.qoder/
+.roo/
+.trae/
+.windsurf/
+.playwright-mcp/
+.spec-workflow/
+
 # Logs
 *.log
