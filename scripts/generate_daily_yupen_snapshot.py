@@ -59,6 +59,7 @@ SECTOR_INDEX_CONFIGS: list[IndexConfig] = [
 OVERSEAS_INDEX_CONFIGS: list[IndexConfig] = [
     IndexConfig("global_ndx", "NDX", "纳斯达克", "global_em", "纳斯达克", "overseas"),
     IndexConfig("global_udx", "UDI", "美元指数", "global_em", "美元指数", "overseas"),
+    IndexConfig("us_soxx", "SOXX", "费城半导体", "eastmoney_us", "105.SOXX", "overseas"),
     IndexConfig("sge_au", "SGE-AU", "黄金", "sge_gold", "SGE-AU", "overseas"),
     IndexConfig("sge_ag", "SGE-AG", "白银", "sge_silver", "SGE-AG", "overseas"),
 ]
@@ -137,6 +138,51 @@ def fetch_global_em(symbol: str, target_date: str) -> pd.DataFrame:
     return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
 
 
+def fetch_eastmoney_us(symbol: str, target_date: str) -> pd.DataFrame:
+    """通过东方财富 API 获取美股/ETF 历史K线数据。
+
+    symbol 格式为 secid，例如 "105.SOXX"（iShares 半导体 ETF）。
+    """
+    import requests
+
+    start_date = (pd.Timestamp(target_date) - pd.Timedelta(days=120)).strftime("%Y%m%d")
+    end_date = target_date.replace("-", "")
+    url = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
+    params = {
+        "secid": symbol,
+        "fields1": "f1,f2,f3,f4,f5,f6",
+        "fields2": "f51,f52,f53,f54,f55,f56,f57",
+        "klt": "101",       # 日K
+        "fqt": "1",         # 前复权
+        "beg": start_date,
+        "end": end_date,
+    }
+    resp = requests.get(url, params=params, timeout=30)
+    resp.raise_for_status()
+    data = resp.json()
+
+    klines = data.get("data", {}).get("klines", [])
+    if not klines:
+        raise ValueError(f"eastmoney_us {symbol} returned empty klines")
+
+    rows = []
+    for line in klines:
+        parts = line.split(",")
+        if len(parts) < 6:
+            continue
+        rows.append({
+            "date": pd.Timestamp(parts[0]),
+            "open": float(parts[1]),
+            "close": float(parts[2]),
+            "high": float(parts[3]),
+            "low": float(parts[4]),
+            "volume": float(parts[5]) if len(parts) > 5 else 0.0,
+        })
+
+    result = pd.DataFrame(rows)
+    return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
+
+
 def fetch_sge_gold(symbol: str, target_date: str) -> pd.DataFrame:
     """获取上海金交所黄金基准价（使用晚盘价作为收盘价）"""
     import akshare as ak
@@ -178,6 +224,7 @@ FETCHERS: dict[str, Callable[[str, str], pd.DataFrame]] = {
     "csindex": fetch_csindex,
     "sw_hist": fetch_sw_hist,
     "global_em": fetch_global_em,
+    "eastmoney_us": fetch_eastmoney_us,
     "sge_gold": fetch_sge_gold,
     "sge_silver": fetch_sge_silver,
 }
