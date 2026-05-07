@@ -36,6 +36,7 @@ MARKET_INDEX_CONFIGS: list[IndexConfig] = [
     IndexConfig("sh000688", "000688.SH", "科创50", "ak_tx", "sh000688", "market"),
     IndexConfig("sh000016", "000016.SH", "上证50", "ak_tx", "sh000016", "market"),
     IndexConfig("sh000852", "000852.SH", "中证1000", "csindex", "000852", "market"),
+    IndexConfig("sh000908", "000908.SH", "中证2000", "ak_tx", "sh000908", "market"),
     IndexConfig("sh000985", "000985.SH", "中证全指", "csindex", "000985", "market"),
 ]
 
@@ -263,6 +264,7 @@ def calculate_kdj(history: pd.DataFrame, n: int = 9, k_period: int = 3, d_period
         j_history.append({
             "date": pd.Timestamp(df["date"].iloc[i]).strftime("%Y-%m-%d"),
             "j": round(j_vals[i], 2),
+            "close": round(float(df["close"].iloc[i]), 2),
         })
 
     return {

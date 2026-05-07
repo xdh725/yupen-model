@@ -28,6 +28,12 @@ export function KDJIndicator({ name, kdj }: KDJIndicatorProps) {
     return { text: '中性区域', subtext: '继续观察', level: 'neutral' as const };
   };
 
+  // Calculate price range for secondary Y axis
+  const closes = (kdj.jHistory || []).map(h => h.close);
+  const priceMin = closes.length > 0 ? Math.min(...closes) : 0;
+  const priceMax = closes.length > 0 ? Math.max(...closes) : 100;
+  const pricePad = (priceMax - priceMin) * 0.1 || 1;
+
   const signalStyles: Record<string, { bg: string; border: string; text: string; dot: string; barBg: string; barFill: string }> = {
     'extreme-overbought': { bg: 'bg-red-50 dark:bg-red-950/30', border: 'border-red-200 dark:border-red-800', text: 'text-red-700 dark:text-red-400', dot: 'bg-red-500', barBg: 'bg-red-100', barFill: 'bg-red-500' },
     'overbought': { bg: 'bg-orange-50 dark:bg-orange-950/30', border: 'border-orange-200 dark:border-orange-800', text: 'text-orange-700 dark:text-orange-400', dot: 'bg-orange-500', barBg: 'bg-orange-100', barFill: 'bg-orange-500' },
@@ -47,6 +53,7 @@ export function KDJIndicator({ name, kdj }: KDJIndicatorProps) {
     j: item.j,
     k: null, // not available in jHistory
     d: null,
+    close: item.close,
   }));
 
   // Custom tooltip
@@ -133,19 +140,19 @@ export function KDJIndicator({ name, kdj }: KDJIndicatorProps) {
       {chartData.length > 1 && (
         <div className="h-40 px-2 pt-2 pb-1">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={chartData} margin={{ top: 2, right: 8, left: -20, bottom: 2 }}>
+            <LineChart data={chartData} margin={{ top: 2, right: 40, left: -20, bottom: 2 }}>
               {/* Zone fills */}
-              <ReferenceArea y1={100} y2={120} fill="#ef4444" fillOpacity={0.06} />
-              <ReferenceArea y1={90} y2={100} fill="#f97316" fillOpacity={0.06} />
-              <ReferenceArea y1={-20} y2={0} fill="#10b981" fillOpacity={0.06} />
-              <ReferenceArea y1={0} y2={20} fill="#14b8a6" fillOpacity={0.06} />
+              <ReferenceArea yAxisId="kdj" y1={100} y2={120} fill="#ef4444" fillOpacity={0.06} />
+              <ReferenceArea yAxisId="kdj" y1={90} y2={100} fill="#f97316" fillOpacity={0.06} />
+              <ReferenceArea yAxisId="kdj" y1={-20} y2={0} fill="#10b981" fillOpacity={0.06} />
+              <ReferenceArea yAxisId="kdj" y1={0} y2={20} fill="#14b8a6" fillOpacity={0.06} />
 
               {/* Reference lines */}
-              <ReferenceLine y={100} stroke="#ef4444" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.6} />
-              <ReferenceLine y={90} stroke="#f97316" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.5} />
-              <ReferenceLine y={50} stroke="#94a3b8" strokeDasharray="2 4" strokeWidth={0.5} opacity={0.3} />
-              <ReferenceLine y={20} stroke="#14b8a6" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.5} />
-              <ReferenceLine y={0} stroke="#10b981" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.6} />
+              <ReferenceLine yAxisId="kdj" y={100} stroke="#ef4444" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.6} />
+              <ReferenceLine yAxisId="kdj" y={90} stroke="#f97316" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.5} />
+              <ReferenceLine yAxisId="kdj" y={50} stroke="#94a3b8" strokeDasharray="2 4" strokeWidth={0.5} opacity={0.3} />
+              <ReferenceLine yAxisId="kdj" y={20} stroke="#14b8a6" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.5} />
+              <ReferenceLine yAxisId="kdj" y={0} stroke="#10b981" strokeDasharray="4 3" strokeWidth={0.8} opacity={0.6} />
 
               <XAxis
                 dataKey="date"
@@ -155,20 +162,41 @@ export function KDJIndicator({ name, kdj }: KDJIndicatorProps) {
                 interval="preserveStartEnd"
               />
               <YAxis
+                yAxisId="kdj"
                 domain={[-20, 120]}
                 tick={{ fontSize: 9, fill: '#94a3b8' }}
                 ticks={[0, 20, 50, 90, 100]}
                 axisLine={{ stroke: '#e2e8f0', strokeWidth: 0.5 }}
                 tickLine={false}
               />
+              <YAxis
+                yAxisId="price"
+                orientation="right"
+                domain={[priceMin - pricePad, priceMax + pricePad]}
+                tick={{ fontSize: 9, fill: '#a78bfa' }}
+                axisLine={{ stroke: '#c4b5fd', strokeWidth: 0.5 }}
+                tickLine={false}
+                tickFormatter={(v: number) => v.toFixed(0)}
+              />
               <Tooltip content={<CustomTooltip />} />
               <Line
+                yAxisId="kdj"
                 type="monotone"
                 dataKey="j"
                 stroke="#6366f1"
                 strokeWidth={1.8}
                 dot={false}
                 activeDot={{ r: 3, strokeWidth: 0, fill: '#6366f1' }}
+              />
+              <Line
+                yAxisId="price"
+                type="monotone"
+                dataKey="close"
+                stroke="#a78bfa"
+                strokeWidth={1.2}
+                strokeDasharray="3 2"
+                dot={false}
+                activeDot={{ r: 2, strokeWidth: 0, fill: '#a78bfa' }}
               />
             </LineChart>
           </ResponsiveContainer>
