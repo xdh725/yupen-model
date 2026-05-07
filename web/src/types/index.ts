@@ -13,7 +13,7 @@ export interface IndexData {
   id: string;
   code: string;
   name: string;
-  category?: 'market' | 'sector';  // market = 大盘, sector = 板块
+  category?: 'market' | 'sector' | 'overseas';  // market = 大盘, sector = 板块, overseas = 海外/商品
   currentPrice: number;
   ma20: number;
   threshold: number;

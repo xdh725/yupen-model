@@ -190,6 +190,7 @@ export function IndexTable({ indices, onDelete }: IndexTableProps) {
                 </TableCell>
                 <TableCell className="truncate">
                   <span className="font-medium truncate block">{idx.name}</span>
+                  <span className="text-muted-foreground text-xs ml-1">{idx.code}</span>
                 </TableCell>
                 <TableCell className="text-center">
                   <span className={`text-xs font-bold ${idx.status === 'YES' ? 'text-green-600' : 'text-red-600'}`}>

@@ -47,7 +47,6 @@ SECTOR_INDEX_CONFIGS: list[IndexConfig] = [
     IndexConfig("sw801741", "801741.SI", "商业航天", "sw_hist", "801741", "sector"),
     IndexConfig("sw801738", "801738.SI", "电网设备", "sw_hist", "801738", "sector"),
     IndexConfig("sz399998", "399998.SZ", "中证煤炭", "ak_tx", "sz399998", "sector"),
-    IndexConfig("sw801192", "801192.SI", "有色金属", "sw_hist", "801192", "sector"),
     IndexConfig("cs931775", "931775.SH", "房地产", "csindex", "931775", "sector"),
     IndexConfig("cs000922", "000922.SH", "中证红利", "csindex", "000922", "sector"),
     IndexConfig("sw801735", "801735.SI", "光伏设备", "sw_hist", "801735", "sector"),
@@ -56,8 +55,16 @@ SECTOR_INDEX_CONFIGS: list[IndexConfig] = [
     IndexConfig("cs931787", "931787.SH", "港股创新药", "csindex", "931787", "sector"),
 ]
 
+# 海外/商品指数配置
+OVERSEAS_INDEX_CONFIGS: list[IndexConfig] = [
+    IndexConfig("global_ndx", "NDX", "纳斯达克", "global_em", "纳斯达克", "overseas"),
+    IndexConfig("global_udx", "UDI", "美元指数", "global_em", "美元指数", "overseas"),
+    IndexConfig("sge_au", "SGE-AU", "黄金", "sge_gold", "SGE-AU", "overseas"),
+    IndexConfig("sge_ag", "SGE-AG", "白银", "sge_silver", "SGE-AG", "overseas"),
+]
+
 # 合并所有配置
-INDEX_CONFIGS = MARKET_INDEX_CONFIGS + SECTOR_INDEX_CONFIGS
+INDEX_CONFIGS = MARKET_INDEX_CONFIGS + SECTOR_INDEX_CONFIGS + OVERSEAS_INDEX_CONFIGS
 
 
 def fetch_ak_tx(symbol: str, target_date: str) -> pd.DataFrame:
@@ -112,10 +119,67 @@ def fetch_sw_hist(symbol: str, target_date: str) -> pd.DataFrame:
     return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
 
 
+def fetch_global_em(symbol: str, target_date: str) -> pd.DataFrame:
+    """获取全球指数历史数据（东方财富）"""
+    import akshare as ak
+
+    df = ak.index_global_hist_em(symbol=symbol)
+    if df.empty:
+        raise ValueError(f"{symbol} returned empty history")
+    result = pd.DataFrame({
+        "date": pd.to_datetime(df["日期"]),
+        "open": pd.to_numeric(df["今开"], errors="coerce").astype(float),
+        "close": pd.to_numeric(df["最新价"], errors="coerce").astype(float),
+        "high": pd.to_numeric(df["最高"], errors="coerce").astype(float),
+        "low": pd.to_numeric(df["最低"], errors="coerce").astype(float),
+        "volume": 0.0,
+    })
+    return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
+
+
+def fetch_sge_gold(symbol: str, target_date: str) -> pd.DataFrame:
+    """获取上海金交所黄金基准价（使用晚盘价作为收盘价）"""
+    import akshare as ak
+
+    df = ak.spot_golden_benchmark_sge()
+    if df.empty:
+        raise ValueError("SGE gold returned empty history")
+    result = pd.DataFrame({
+        "date": pd.to_datetime(df["交易时间"]),
+        "open": pd.to_numeric(df["早盘价"], errors="coerce").astype(float),
+        "close": pd.to_numeric(df["晚盘价"], errors="coerce").astype(float),
+        "high": pd.to_numeric(df["晚盘价"], errors="coerce").astype(float),
+        "low": pd.to_numeric(df["早盘价"], errors="coerce").astype(float),
+        "volume": 0.0,
+    })
+    return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
+
+
+def fetch_sge_silver(symbol: str, target_date: str) -> pd.DataFrame:
+    """获取上海金交所白银基准价（使用晚盘价作为收盘价）"""
+    import akshare as ak
+
+    df = ak.spot_silver_benchmark_sge()
+    if df.empty:
+        raise ValueError("SGE silver returned empty history")
+    result = pd.DataFrame({
+        "date": pd.to_datetime(df["交易时间"]),
+        "open": pd.to_numeric(df["早盘价"], errors="coerce").astype(float),
+        "close": pd.to_numeric(df["晚盘价"], errors="coerce").astype(float),
+        "high": pd.to_numeric(df["晚盘价"], errors="coerce").astype(float),
+        "low": pd.to_numeric(df["早盘价"], errors="coerce").astype(float),
+        "volume": 0.0,
+    })
+    return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
+
+
 FETCHERS: dict[str, Callable[[str, str], pd.DataFrame]] = {
     "ak_tx": fetch_ak_tx,
     "csindex": fetch_csindex,
     "sw_hist": fetch_sw_hist,
+    "global_em": fetch_global_em,
+    "sge_gold": fetch_sge_gold,
+    "sge_silver": fetch_sge_silver,
 }
 
 
@@ -199,17 +263,27 @@ def calculate_status_change(history: pd.DataFrame, current_status: str) -> tuple
 
 def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
     items: list[dict] = []
+    skipped: list[str] = []
+
     for config in INDEX_CONFIGS:
         history = FETCHERS[config.source](config.symbol, target_date)
         if len(history) < 20:
-            print(f"Warning: {config.code} history shorter than 20 rows, skipping...")
+            print(f"⚠️  [snapshot] {config.code} {config.name} 历史数据不足 20 行, 跳过")
+            skipped.append(f"{config.code}({config.name}): 数据不足")
             continue
 
         last_row = history.iloc[-1]
+        updated_at = pd.Timestamp(last_row["date"]).strftime("%Y-%m-%d")
+
+        # 数据源校验：最新数据日期必须等于 target_date，否则跳过
+        if updated_at != target_date:
+            print(f"❌ [snapshot] {config.code} {config.name} 数据未更新 (latest={updated_at}, expected={target_date}), 跳过")
+            skipped.append(f"{config.code}({config.name}): 数据停留在 {updated_at}")
+            continue
+
         ma20 = float(history["close"].tail(20).mean())
         current = float(last_row["close"])
         deviation = ((current - ma20) / ma20) * 100 if ma20 else 0.0
-        updated_at = pd.Timestamp(last_row["date"]).strftime("%Y-%m-%d")
         status = "YES" if current >= ma20 else "NO"
 
         # 计算 KDJ
@@ -232,6 +306,8 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
 
         # 状态转变时间 & 区间涨幅
         status_change_date, period_change = calculate_status_change(history, status)
+
+        print(f"✅ [snapshot] {config.code} {config.name} price={current:.2f} ma20={ma20:.2f} status={status}")
 
         items.append(
             {
@@ -256,8 +332,12 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
             }
         )
 
+    print(f"📊 [snapshot] 汇总: 成功={len(items)}, 跳过={len(skipped)}/{len(INDEX_CONFIGS)}")
+    for s in skipped:
+        print(f"   - {s}")
+
     if not items:
-        raise ValueError("No valid data fetched")
+        raise ValueError(f"No valid data fetched for {target_date}. All indices skipped. Reasons: {skipped}")
 
     snapshot_date = max(item["updatedAt"] for item in items)
 
@@ -272,9 +352,9 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
         for idx, item in enumerate(bucket, start=1):
             item["strength"] = idx
 
-    # 写入快照时保持每个类别内部按强度排序，类别顺序固定 market -> sector -> others
+    # 写入快照时保持每个类别内部按强度排序，类别顺序固定 market -> sector -> overseas -> others
     ordered: list[dict] = []
-    for category in ("market", "sector"):
+    for category in ("market", "sector", "overseas"):
         ordered.extend(category_buckets.pop(category, []))
     for bucket in category_buckets.values():
         ordered.extend(bucket)
@@ -316,7 +396,7 @@ def save_snapshot(snapshot_date: str, indices: list[dict]) -> Path:
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     payload = {
         "date": snapshot_date,
-        "generatedAt": datetime.now().isoformat(timespec="seconds"),
+        "generatedAt": datetime.now().astimezone().isoformat(timespec="seconds"),
         "count": len(indices),
         "indices": indices,
     }
@@ -388,10 +468,13 @@ def main() -> None:
     parser.add_argument("--date", dest="target_date", default=datetime.now().strftime("%Y-%m-%d"))
     args = parser.parse_args()
 
+    print(f"🔄 [snapshot] 开始生成快照 target_date={args.target_date}")
+
     previous_date = None
     if MANIFEST_PATH.exists():
         manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
         previous_date = resolve_previous_date(manifest, args.target_date)
+        print(f"📋 [snapshot] 上一个快照日期: {previous_date or '无'}")
 
     snapshot_date, indices = calculate_snapshot(args.target_date)
     previous_indices = load_previous_snapshot(previous_date)
@@ -401,9 +484,10 @@ def main() -> None:
     csv_path = save_csv(snapshot_date, indices)
     manifest_path = update_manifest(snapshot_date)
 
-    print(f"snapshot={snapshot_path}")
-    print(f"csv={csv_path}")
-    print(f"manifest={manifest_path}")
+    print(f"💾 [snapshot] snapshot={snapshot_path}")
+    print(f"💾 [snapshot] csv={csv_path}")
+    print(f"💾 [snapshot] manifest={manifest_path}")
+    print(f"✅ [snapshot] 完成 date={snapshot_date} indices={len(indices)}")
 
 
 if __name__ == "__main__":

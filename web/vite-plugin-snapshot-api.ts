@@ -42,6 +42,21 @@ export function snapshotApiPlugin(): Plugin {
   return {
     name: 'snapshot-api',
     configureServer(server) {
+      const log = {
+        info: (msg: string) => {
+          const ts = new Date().toISOString().slice(11, 19);
+          server.config.logger.info(`\x1b[36m[${ts}]\x1b[0m ${msg}`);
+        },
+        warn: (msg: string) => {
+          const ts = new Date().toISOString().slice(11, 19);
+          server.config.logger.warn(`\x1b[33m[${ts}]\x1b[0m ${msg}`);
+        },
+        error: (msg: string) => {
+          const ts = new Date().toISOString().slice(11, 19);
+          server.config.logger.error(`\x1b[31m[${ts}]\x1b[0m ${msg}`);
+        },
+      };
+
       server.middlewares.use('/api/index-table-widths', async (req, res) => {
         const url = new URL(req.url ?? '', 'http://localhost');
         const profile = url.searchParams.get('profile') === 'withDelete' ? 'withDelete' : 'noDelete';
@@ -103,6 +118,7 @@ export function snapshotApiPlugin(): Plugin {
           try {
             const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
             if (manifest.latest === today) {
+              log.info(`🔄 [refresh-snapshot] 今天 (${today}) 的快照已存在，跳过生成`);
               res.setHeader('Content-Type', 'application/json');
               res.end(JSON.stringify({
                 status: 'already_exists',
@@ -118,17 +134,41 @@ export function snapshotApiPlugin(): Plugin {
 
         // 执行 Python 脚本
         const scriptPath = resolve(ROOT, 'scripts/generate_daily_yupen_snapshot.py');
-        const command = `python3 ${scriptPath}`;
         const startedAt = Date.now();
         const now = new Date();
         const hour = now.getHours();
         const marketClosed = hour >= 15; // A股 15:00 收盘
 
+        if (!marketClosed) {
+          log.warn(`🔄 [refresh-snapshot] 注意: 当前 ${hour}:${String(now.getMinutes()).padStart(2, '0')} 尚未收盘，数据可能不完整`);
+        }
+        log.info(`🔄 [refresh-snapshot] 开始执行 python3 scripts/generate_daily_yupen_snapshot.py ...`);
+
         execFile('python3', [scriptPath], { timeout: 300_000 }, (error, stdout, stderr) => {
           res.setHeader('Content-Type', 'application/json');
           const elapsedMs = Date.now() - startedAt;
+          const elapsedSec = (elapsedMs / 1000).toFixed(1);
+
+          // 将 Python 脚本的输出打印到 Vite 服务端控制台
+          if (stdout) {
+            for (const line of stdout.trim().split('\n')) {
+              if (line.includes('❌') || line.includes('Error') || line.includes('error')) {
+                log.error(`   ${line}`);
+              } else if (line.includes('⚠️') || line.includes('Warning')) {
+                log.warn(`   ${line}`);
+              } else {
+                log.info(`   ${line}`);
+              }
+            }
+          }
+          if (stderr) {
+            for (const line of stderr.trim().split('\n')) {
+              log.error(`   [stderr] ${line}`);
+            }
+          }
+
           const debugLog = {
-            command,
+            command: `python3 ${scriptPath}`,
             startedAt: new Date(startedAt).toISOString(),
             elapsedMs,
             stdout: stdout ?? '',
@@ -136,6 +176,7 @@ export function snapshotApiPlugin(): Plugin {
           };
 
           if (error) {
+            log.error(`❌ [refresh-snapshot] 生成失败 (${elapsedSec}s): ${error.message}`);
             res.statusCode = 500;
             res.end(JSON.stringify({
               status: 'error',
@@ -148,6 +189,8 @@ export function snapshotApiPlugin(): Plugin {
           // 从输出中提取生成的日期
           const dateMatch = stdout.match(/snapshot=.*?(\d{4}-\d{2}-\d{2})\.json/);
           const generatedDate = dateMatch ? dateMatch[1] : today;
+
+          log.info(`✅ [refresh-snapshot] 完成 date=${generatedDate} (${elapsedSec}s)`);
 
           res.end(JSON.stringify({
             status: 'generated',

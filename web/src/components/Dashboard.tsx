@@ -4,8 +4,8 @@ import { KDJIndicator } from './KDJIndicator';
 import { useYupenStore } from '@/store/yupenStore';
 import { getMarketStats } from '@/utils/yupen';
 import { Button } from '@/components/ui/button';
-import { RefreshCw } from 'lucide-react';
-import { useState, useCallback } from 'react';
+import { RefreshCw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useCallback, useMemo } from 'react';
 import { indexTablePreviewData } from '@/mock/indexTablePreview';
 
 interface DashboardProps {
@@ -28,11 +28,31 @@ export function Dashboard({ onOpenSettings }: DashboardProps) {
   const [debugMode, setDebugMode] = useState(import.meta.env.DEV);
   const [debugLogText, setDebugLogText] = useState('');
 
-  const filteredIndices = indices.filter(idx => (idx.category || 'market') === selectedCategory);
-  const previewIndices = indexTablePreviewData.filter(idx => (idx.category || 'market') === selectedCategory);
+  const filteredIndices = indices.filter(idx => {
+    const cat = idx.category || 'market';
+    return cat === selectedCategory || (selectedCategory === 'market' && cat === 'overseas');
+  });
+  const previewIndices = indexTablePreviewData.filter(idx => {
+    const cat = idx.category || 'market';
+    return cat === selectedCategory || (selectedCategory === 'market' && cat === 'overseas');
+  });
   const usingPreviewData = import.meta.env.DEV && filteredIndices.length === 0;
   const tableIndices = usingPreviewData ? previewIndices : filteredIndices;
   const stats = getMarketStats(tableIndices);
+
+  // 日期导航
+  const currentDateIdx = useMemo(
+    () => (selectedDate ? availableDates.indexOf(selectedDate) : -1),
+    [selectedDate, availableDates]
+  );
+  const hasPrevDate = currentDateIdx >= 0 && currentDateIdx < availableDates.length - 1;
+  const hasNextDate = currentDateIdx > 0;
+  const goPrevDate = useCallback(() => {
+    if (hasPrevDate) void loadSnapshotByDate(availableDates[currentDateIdx + 1]);
+  }, [hasPrevDate, availableDates, currentDateIdx, loadSnapshotByDate]);
+  const goNextDate = useCallback(() => {
+    if (hasNextDate) void loadSnapshotByDate(availableDates[currentDateIdx - 1]);
+  }, [hasNextDate, availableDates, currentDateIdx, loadSnapshotByDate]);
 
   const handleRefreshSnapshot = useCallback(async () => {
     setGenerating(true);
@@ -82,13 +102,35 @@ export function Dashboard({ onOpenSettings }: DashboardProps) {
         </div>
         <div className="flex items-center gap-2 text-sm">
           {availableDates.length > 0 && (
-            <select
-              className="h-8 rounded border border-input bg-background px-2 text-sm"
-              value={selectedDate ?? ''}
-              onChange={(e) => { if (e.target.value) void loadSnapshotByDate(e.target.value); }}
-            >
-              {availableDates.map(d => <option key={d} value={d}>{d}</option>)}
-            </select>
+            <div className="flex items-center gap-1">
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-7 w-7"
+                disabled={!hasPrevDate || loadingSnapshot}
+                onClick={goPrevDate}
+                title="上一个交易日"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <select
+                className="h-8 rounded border border-input bg-background px-2 text-sm"
+                value={selectedDate ?? ''}
+                onChange={(e) => { if (e.target.value) void loadSnapshotByDate(e.target.value); }}
+              >
+                {availableDates.map(d => <option key={d} value={d}>{d}</option>)}
+              </select>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-7 w-7"
+                disabled={!hasNextDate || loadingSnapshot}
+                onClick={goNextDate}
+                title="下一个交易日"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
           )}
           <Button size="sm" variant="outline" onClick={() => void loadSnapshotManifest()} disabled={loadingSnapshot}>
             {loadingSnapshot ? '...' : '刷新'}

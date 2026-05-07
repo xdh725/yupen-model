@@ -209,7 +209,13 @@ export const useYupenStore = create<YupenStore>()(
     }),
     {
       name: 'yupen-storage',
-      version: 1
+      version: 1,
+      partialize: (state) => ({
+        indices: state.indices,
+        config: state.config,
+        availableDates: state.availableDates,
+        selectedDate: state.selectedDate,
+      }),
     }
   )
 );
