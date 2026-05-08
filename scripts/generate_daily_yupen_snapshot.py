@@ -47,6 +47,7 @@ SECTOR_INDEX_CONFIGS: list[IndexConfig] = [
     IndexConfig("cs000813", "000813.SH", "细分化工", "csindex", "000813", "sector"),
     IndexConfig("sw801741", "801741.SI", "商业航天", "sw_hist", "801741", "sector"),
     IndexConfig("sw801738", "801738.SI", "电网设备", "sw_hist", "801738", "sector"),
+    IndexConfig("sw801750", "801750.SI", "通信", "sw_hist", "801750", "sector"),
     IndexConfig("sz399998", "399998.SZ", "中证煤炭", "ak_tx", "sz399998", "sector"),
     IndexConfig("cs931775", "931775.SH", "房地产", "csindex", "931775", "sector"),
     IndexConfig("cs000922", "000922.SH", "中证红利", "csindex", "000922", "sector"),
