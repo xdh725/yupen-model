@@ -265,7 +265,10 @@ def calculate_kdj(history: pd.DataFrame, n: int = 9, k_period: int = 3, d_period
         j_history.append({
             "date": pd.Timestamp(df["date"].iloc[i]).strftime("%Y-%m-%d"),
             "j": round(j_vals[i], 2),
+            "open": round(float(df["open"].iloc[i]), 2),
             "close": round(float(df["close"].iloc[i]), 2),
+            "high": round(float(df["high"].iloc[i]), 2),
+            "low": round(float(df["low"].iloc[i]), 2),
         })
 
     return {

@@ -6,7 +6,7 @@ export interface KDJData {
   k: number | null;
   d: number | null;
   j: number | null;
-  jHistory: { date: string; j: number; close: number }[];
+  jHistory: { date: string; j: number; open: number; close: number; high: number; low: number }[];
 }
 
 export interface IndexData {
