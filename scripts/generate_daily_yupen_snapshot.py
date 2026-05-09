@@ -7,6 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Callable
 
+import time
+
 import pandas as pd
 
 
@@ -232,6 +234,23 @@ FETCHERS: dict[str, Callable[[str, str], pd.DataFrame]] = {
 }
 
 
+def fetch_with_retry(source: str, symbol: str, target_date: str, max_retries: int = 3, delay: float = 5.0) -> pd.DataFrame:
+    """带重试的数据获取，处理网络/代理瞬态错误。"""
+    fetcher = FETCHERS[source]
+    last_err = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            return fetcher(symbol, target_date)
+        except Exception as e:
+            last_err = e
+            if attempt < max_retries:
+                print(f"⚠️  [retry] {symbol} attempt {attempt}/{max_retries} failed: {e.__class__.__name__}: {e}. Retrying in {delay}s...")
+                time.sleep(delay)
+            else:
+                raise last_err
+    raise last_err  # unreachable, but satisfies type checker
+
+
 def calculate_kdj(history: pd.DataFrame, n: int = 9, k_period: int = 3, d_period: int = 3) -> dict:
     """计算 KDJ 指标，返回最新一天的 K, D, J 值及 J 值历史序列。
 
@@ -319,7 +338,13 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
     skipped: list[str] = []
 
     for config in INDEX_CONFIGS:
-        history = FETCHERS[config.source](config.symbol, target_date)
+        try:
+            history = fetch_with_retry(config.source, config.symbol, target_date)
+        except Exception as e:
+            print(f"❌ [snapshot] {config.code} {config.name} 获取失败: {e.__class__.__name__}: {e}")
+            skipped.append(f"{config.code}({config.name}): 获取失败 ({e.__class__.__name__})")
+            continue
+
         if len(history) < 20:
             print(f"⚠️  [snapshot] {config.code} {config.name} 历史数据不足 20 行, 跳过")
             skipped.append(f"{config.code}({config.name}): 数据不足")
