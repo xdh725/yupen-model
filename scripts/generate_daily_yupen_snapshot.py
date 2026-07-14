@@ -61,9 +61,9 @@ SECTOR_INDEX_CONFIGS: list[IndexConfig] = [
 
 # 海外/商品指数配置
 OVERSEAS_INDEX_CONFIGS: list[IndexConfig] = [
-    IndexConfig("global_ndx", "NDX", "纳斯达克", "global_em", "纳斯达克", "overseas"),
-    IndexConfig("global_udx", "UDI", "美元指数", "global_em", "美元指数", "overseas"),
-    IndexConfig("us_soxx", "SOXX", "费城半导体", "eastmoney_us", "105.SOXX", "overseas"),
+    IndexConfig("global_ndx", "COMP", "纳斯达克", "us_daily_sina", "COMP", "overseas"),
+    IndexConfig("global_udx", "UUP", "美元指数", "us_daily_sina", "UUP", "overseas"),
+    IndexConfig("us_soxx", "SOXX", "费城半导体", "us_daily_sina", "SOXX", "overseas"),
     IndexConfig("sge_au", "SGE-AU", "黄金", "sge_gold", "SGE-AU", "overseas"),
     IndexConfig("sge_ag", "SGE-AG", "白银", "sge_silver", "SGE-AG", "overseas"),
 ]
@@ -187,6 +187,23 @@ def fetch_eastmoney_us(symbol: str, target_date: str) -> pd.DataFrame:
     return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
 
 
+def fetch_us_daily_sina(symbol: str, target_date: str) -> pd.DataFrame:
+    """通过 akshare 的 stock_us_daily（新浪数据源）获取美股/ETF/指数历史 K 线。
+
+    symbol 例如 "SOXX"（费城半导体 ETF）、"COMP"（纳斯达克综合指数）、"UUP"（美元指数 ETF）。
+    """
+    import akshare as ak
+
+    df = ak.stock_us_daily(symbol=symbol)
+    if df.empty:
+        raise ValueError(f"us_daily_sina {symbol} returned empty history")
+    result = df[["date", "open", "close", "high", "low", "volume"]].copy()
+    result["date"] = pd.to_datetime(result["date"])
+    for col in ["open", "close", "high", "low", "volume"]:
+        result[col] = pd.to_numeric(result[col], errors="coerce").fillna(0).astype(float)
+    return result[result["date"] <= pd.Timestamp(target_date)].sort_values("date").reset_index(drop=True)
+
+
 def fetch_sge_gold(symbol: str, target_date: str) -> pd.DataFrame:
     """获取上海金交所黄金基准价（使用晚盘价作为收盘价）"""
     import akshare as ak
@@ -229,6 +246,7 @@ FETCHERS: dict[str, Callable[[str, str], pd.DataFrame]] = {
     "sw_hist": fetch_sw_hist,
     "global_em": fetch_global_em,
     "eastmoney_us": fetch_eastmoney_us,
+    "us_daily_sina": fetch_us_daily_sina,
     "sge_gold": fetch_sge_gold,
     "sge_silver": fetch_sge_silver,
 }
@@ -338,25 +356,53 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
     skipped: list[str] = []
 
     for config in INDEX_CONFIGS:
+        skip_reason = None
         try:
             history = fetch_with_retry(config.source, config.symbol, target_date)
         except Exception as e:
             print(f"❌ [snapshot] {config.code} {config.name} 获取失败: {e.__class__.__name__}: {e}")
-            skipped.append(f"{config.code}({config.name}): 获取失败 ({e.__class__.__name__})")
-            continue
+            skip_reason = f"获取失败 ({e.__class__.__name__})"
+            history = None
 
-        if len(history) < 20:
+        if history is not None and len(history) < 20:
             print(f"⚠️  [snapshot] {config.code} {config.name} 历史数据不足 20 行, 跳过")
-            skipped.append(f"{config.code}({config.name}): 数据不足")
-            continue
+            skip_reason = "数据不足"
+            history = None
 
-        last_row = history.iloc[-1]
-        updated_at = pd.Timestamp(last_row["date"]).strftime("%Y-%m-%d")
+        if history is not None:
+            last_row = history.iloc[-1]
+            updated_at = pd.Timestamp(last_row["date"]).strftime("%Y-%m-%d")
+            # 数据源校验：最新数据日期必须等于 target_date，否则跳过
+            if updated_at != target_date:
+                print(f"❌ [snapshot] {config.code} {config.name} 数据未更新 (latest={updated_at}, expected={target_date}), 跳过")
+                skip_reason = f"数据停留在 {updated_at}"
+                history = None
 
-        # 数据源校验：最新数据日期必须等于 target_date，否则跳过
-        if updated_at != target_date:
-            print(f"❌ [snapshot] {config.code} {config.name} 数据未更新 (latest={updated_at}, expected={target_date}), 跳过")
-            skipped.append(f"{config.code}({config.name}): 数据停留在 {updated_at}")
+        if skip_reason:
+            skipped.append(f"{config.code}({config.name}): {skip_reason}")
+            # 写入占位记录，前端可显示"数据获取失败"
+            items.append({
+                "id": config.id,
+                "code": config.code,
+                "name": config.name,
+                "category": config.category,
+                "currentPrice": 0,
+                "ma20": 0,
+                "threshold": 0,
+                "status": "NO",
+                "deviation": 0,
+                "strength": 0,
+                "duration": 0,
+                "updatedAt": target_date,
+                "fetchFailed": True,
+                "fetchFailReason": skip_reason,
+                "kdj": {"k": None, "d": None, "j": None, "jHistory": []},
+                "changePercent": None,
+                "volumeRatio": None,
+                "statusChangeDate": None,
+                "periodChangePercent": None,
+                "rankChange": 0,
+            })
             continue
 
         ma20 = float(history["close"].tail(20).mean())
@@ -410,7 +456,9 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
             }
         )
 
-    print(f"📊 [snapshot] 汇总: 成功={len(items)}, 跳过={len(skipped)}/{len(INDEX_CONFIGS)}")
+    ok_count = sum(1 for i in items if not i.get("fetchFailed"))
+    fail_count = sum(1 for i in items if i.get("fetchFailed"))
+    print(f"📊 [snapshot] 汇总: 成功={ok_count}, 失败={fail_count}/{len(INDEX_CONFIGS)}")
     for s in skipped:
         print(f"   - {s}")
 
@@ -426,7 +474,8 @@ def calculate_snapshot(target_date: str) -> tuple[str, list[dict]]:
         category_buckets.setdefault(category, []).append(item)
 
     for bucket in category_buckets.values():
-        bucket.sort(key=lambda item: item["deviation"], reverse=True)
+        # fetchFailed 的排到最后，其余按偏离度降序
+        bucket.sort(key=lambda item: (item.get("fetchFailed", False), -item["deviation"]))
         for idx, item in enumerate(bucket, start=1):
             item["strength"] = idx
 
@@ -525,47 +574,121 @@ def update_manifest(snapshot_date: str) -> Path:
 
 
 def resolve_previous_date(manifest: dict, snapshot_date: str) -> str | None:
-    """确定用于对比的上一交易日。
+    """确定用于对比的上一交易日快照日期。
 
-    规则：
-    1) 若 latest 不是当前快照日，优先使用 latest。
-    2) 若 latest 与当前快照日相同，则从 manifest.dates 中回退到第一个不同日期。
+    从所有已有快照中找到严格早于 snapshot_date 的最近日期，
+    确保回填历史快照时也能正确链接到前一个交易日。
     """
-    latest = manifest.get("latest")
-    if latest and latest != snapshot_date:
-        return latest
+    # 收集所有已有快照日期（manifest + 文件系统）
+    existing: set[str] = set()
+    existing.update(manifest.get("dates", []))
+    for f in SNAPSHOT_DIR.glob("*.json"):
+        if f.stem != "manifest":
+            existing.add(f.stem)
 
-    for day in manifest.get("dates", []):
-        if day != snapshot_date:
-            return day
-    return None
+    # 找到严格早于 snapshot_date 的最大日期
+    earlier = sorted(d for d in existing if d < snapshot_date)
+    return earlier[-1] if earlier else None
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate daily yupen snapshot")
-    parser.add_argument("--date", dest="target_date", default=datetime.now().strftime("%Y-%m-%d"))
-    args = parser.parse_args()
-
-    print(f"🔄 [snapshot] 开始生成快照 target_date={args.target_date}")
+def generate_one_snapshot(target_date: str) -> bool:
+    """为指定日期生成单个快照，返回是否成功。"""
+    if (SNAPSHOT_DIR / f"{target_date}.json").exists():
+        print(f"⏭️  [snapshot] {target_date} 快照已存在，跳过")
+        return True
 
     previous_date = None
     if MANIFEST_PATH.exists():
         manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-        previous_date = resolve_previous_date(manifest, args.target_date)
-        print(f"📋 [snapshot] 上一个快照日期: {previous_date or '无'}")
+        previous_date = resolve_previous_date(manifest, target_date)
 
-    snapshot_date, indices = calculate_snapshot(args.target_date)
+    try:
+        snapshot_date, indices = calculate_snapshot(target_date)
+    except Exception as e:
+        print(f"❌ [snapshot] {target_date} 数据获取失败: {e}")
+        return False
+
     previous_indices = load_previous_snapshot(previous_date)
     update_durations(indices, previous_indices)
     update_rank_changes(indices, previous_indices)
     snapshot_path = save_snapshot(snapshot_date, indices)
     csv_path = save_csv(snapshot_date, indices)
-    manifest_path = update_manifest(snapshot_date)
+    update_manifest(snapshot_date)
 
-    print(f"💾 [snapshot] snapshot={snapshot_path}")
-    print(f"💾 [snapshot] csv={csv_path}")
-    print(f"💾 [snapshot] manifest={manifest_path}")
+    print(f"💾 [snapshot] snapshot={snapshot_path} csv={csv_path}")
     print(f"✅ [snapshot] 完成 date={snapshot_date} indices={len(indices)}")
+    return True
+
+
+def find_missing_dates(days: int = 30) -> list[str]:
+    """检查最近 N 天内缺失的交易日快照。
+
+    通过 manifest.json 中的已有日期与 snapshots 目录中的文件取并集，
+    然后与最近 N 天的所有日期（排除周末）做差集得到缺失列表。
+    """
+    today = datetime.now().date()
+    start = today - __import__("datetime").timedelta(days=days)
+
+    # 收集已有的日期
+    existing_dates: set[str] = set()
+    if MANIFEST_PATH.exists():
+        manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        existing_dates.update(manifest.get("dates", []))
+    for f in SNAPSHOT_DIR.glob("*.json"):
+        if f.stem != "manifest":
+            existing_dates.add(f.stem)
+
+    # 生成最近 N 天的工作日列表（排除周末）
+    missing: list[str] = []
+    current = start
+    while current <= today:
+        if current.weekday() < 5:  # 周一~周五
+            date_str = current.strftime("%Y-%m-%d")
+            if date_str not in existing_dates:
+                missing.append(date_str)
+        current += __import__("datetime").timedelta(days=1)
+
+    return missing
+
+
+def fill_gaps(days: int = 30) -> tuple[int, int]:
+    """补生成最近 N 天内缺失的快照，返回 (成功数, 失败数)。"""
+    missing = find_missing_dates(days)
+    if not missing:
+        print(f"📋 [fill-gaps] 最近 {days} 天无缺失快照")
+        return 0, 0
+
+    print(f"📋 [fill-gaps] 发现 {len(missing)} 个缺失日期: {missing}")
+    success, fail = 0, 0
+    for date_str in missing:
+        print(f"🔄 [fill-gaps] 补生成 {date_str} ...")
+        if generate_one_snapshot(date_str):
+            success += 1
+        else:
+            fail += 1
+        # 每个日期之间间隔 2 秒，避免 API 限流
+        if date_str != missing[-1]:
+            time.sleep(2)
+
+    print(f"📊 [fill-gaps] 补缺完成: 成功={success}, 失败={fail}")
+    return success, fail
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate daily yupen snapshot")
+    parser.add_argument("--date", dest="target_date", default=datetime.now().strftime("%Y-%m-%d"))
+    parser.add_argument("--fill-gaps", dest="fill_gaps", action="store_true",
+                        help="检查最近30天缺失的快照并补生成")
+    parser.add_argument("--fill-gaps-days", dest="fill_gaps_days", type=int, default=30,
+                        help="补缺检查的天数范围 (默认30)")
+    args = parser.parse_args()
+
+    # 先补缺再生成当日
+    if args.fill_gaps:
+        fill_gaps(args.fill_gaps_days)
+
+    print(f"🔄 [snapshot] 开始生成快照 target_date={args.target_date}")
+    generate_one_snapshot(args.target_date)
 
 
 if __name__ == "__main__":

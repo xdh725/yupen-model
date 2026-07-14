@@ -39,3 +39,6 @@ __pycache__/
 
 # Logs
 *.log
+
+# Local validation state
+web/public/data/.validated

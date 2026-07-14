@@ -1,0 +1,1719 @@
+{
+  "date": "2026-05-04",
+  "generatedAt": "2026-05-15T12:59:50+08:00",
+  "count": 28,
+  "indices": [
+    {
+      "id": "sh000001",
+      "code": "000001.SH",
+      "name": "上证指数",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 1,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sz399001",
+      "code": "399001.SZ",
+      "name": "深证成指",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 2,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sz399006",
+      "code": "399006.SZ",
+      "name": "创业板指",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 3,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000300",
+      "code": "000300.SH",
+      "name": "沪深300",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 4,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000905",
+      "code": "000905.SH",
+      "name": "中证500",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 5,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000688",
+      "code": "000688.SH",
+      "name": "科创50",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 6,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000016",
+      "code": "000016.SH",
+      "name": "上证50",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 7,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000852",
+      "code": "000852.SH",
+      "name": "中证1000",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 8,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000908",
+      "code": "000908.SH",
+      "name": "中证2000",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 9,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sh000985",
+      "code": "000985.SH",
+      "name": "中证全指",
+      "category": "market",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 10,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "cs931787",
+      "code": "931787.SH",
+      "name": "港股创新药",
+      "category": "sector",
+      "currentPrice": 1338.25,
+      "ma20": 1383.42,
+      "threshold": 1383.42,
+      "status": "NO",
+      "deviation": -3.26,
+      "strength": 1,
+      "duration": 8,
+      "updatedAt": "2026-05-04",
+      "kdj": {
+        "k": 27.02,
+        "d": 28.93,
+        "j": 23.21,
+        "jHistory": [
+          {
+            "date": "2026-03-18",
+            "j": 85.77,
+            "open": 1284.64,
+            "close": 1304.43,
+            "high": 1308.29,
+            "low": 1284.05
+          },
+          {
+            "date": "2026-03-19",
+            "j": 65.07,
+            "open": 1285.29,
+            "close": 1266.64,
+            "high": 1288.37,
+            "low": 1259.63
+          },
+          {
+            "date": "2026-03-20",
+            "j": 35.08,
+            "open": 1269.3,
+            "close": 1248.6,
+            "high": 1294.3,
+            "low": 1237.99
+          },
+          {
+            "date": "2026-03-23",
+            "j": 13.92,
+            "open": 1223.57,
+            "close": 1196.69,
+            "high": 1223.57,
+            "low": 1174.37
+          },
+          {
+            "date": "2026-03-24",
+            "j": 30.82,
+            "open": 1219.02,
+            "close": 1247.0,
+            "high": 1250.95,
+            "low": 1209.6
+          },
+          {
+            "date": "2026-03-25",
+            "j": 44.09,
+            "open": 1258.93,
+            "close": 1254.26,
+            "high": 1268.21,
+            "low": 1243.79
+          },
+          {
+            "date": "2026-03-26",
+            "j": 39.29,
+            "open": 1263.09,
+            "close": 1231.7,
+            "high": 1278.18,
+            "low": 1227.4
+          },
+          {
+            "date": "2026-03-27",
+            "j": 71.56,
+            "open": 1224.75,
+            "close": 1297.96,
+            "high": 1303.1,
+            "low": 1223.4
+          },
+          {
+            "date": "2026-03-30",
+            "j": 94.45,
+            "open": 1282.58,
+            "close": 1301.95,
+            "high": 1312.82,
+            "low": 1278.9
+          },
+          {
+            "date": "2026-03-31",
+            "j": 95.45,
+            "open": 1307.21,
+            "close": 1303.54,
+            "high": 1334.48,
+            "low": 1290.52
+          },
+          {
+            "date": "2026-04-01",
+            "j": 106.65,
+            "open": 1346.08,
+            "close": 1398.18,
+            "high": 1406.01,
+            "low": 1331.31
+          },
+          {
+            "date": "2026-04-02",
+            "j": 108.13,
+            "open": 1404.98,
+            "close": 1415.5,
+            "high": 1432.14,
+            "low": 1387.22
+          },
+          {
+            "date": "2026-04-08",
+            "j": 96.63,
+            "open": 1435.5,
+            "close": 1393.25,
+            "high": 1439.14,
+            "low": 1384.42
+          },
+          {
+            "date": "2026-04-09",
+            "j": 85.1,
+            "open": 1391.97,
+            "close": 1383.33,
+            "high": 1421.13,
+            "low": 1381.18
+          },
+          {
+            "date": "2026-04-10",
+            "j": 82.63,
+            "open": 1392.19,
+            "close": 1394.07,
+            "high": 1402.42,
+            "low": 1381.86
+          },
+          {
+            "date": "2026-04-13",
+            "j": 75.54,
+            "open": 1390.15,
+            "close": 1378.52,
+            "high": 1390.15,
+            "low": 1371.24
+          },
+          {
+            "date": "2026-04-14",
+            "j": 69.53,
+            "open": 1388.14,
+            "close": 1389.06,
+            "high": 1397.73,
+            "low": 1368.85
+          },
+          {
+            "date": "2026-04-15",
+            "j": 87.53,
+            "open": 1412.04,
+            "close": 1443.88,
+            "high": 1451.21,
+            "low": 1406.57
+          },
+          {
+            "date": "2026-04-16",
+            "j": 98.13,
+            "open": 1450.94,
+            "close": 1455.43,
+            "high": 1458.42,
+            "low": 1434.77
+          },
+          {
+            "date": "2026-04-17",
+            "j": 77.4,
+            "open": 1454.87,
+            "close": 1431.78,
+            "high": 1465.64,
+            "low": 1412.81
+          },
+          {
+            "date": "2026-04-20",
+            "j": 56.39,
+            "open": 1439.08,
+            "close": 1418.8,
+            "high": 1439.08,
+            "low": 1417.2
+          },
+          {
+            "date": "2026-04-21",
+            "j": 37.68,
+            "open": 1420.56,
+            "close": 1407.81,
+            "high": 1425.76,
+            "low": 1400.05
+          },
+          {
+            "date": "2026-04-22",
+            "j": 20.5,
+            "open": 1404.65,
+            "close": 1396.41,
+            "high": 1416.01,
+            "low": 1392.79
+          },
+          {
+            "date": "2026-04-23",
+            "j": -5.74,
+            "open": 1391.64,
+            "close": 1336.83,
+            "high": 1391.64,
+            "low": 1332.26
+          },
+          {
+            "date": "2026-04-24",
+            "j": 2.54,
+            "open": 1332.33,
+            "close": 1345.46,
+            "high": 1353.7,
+            "low": 1299.31
+          },
+          {
+            "date": "2026-04-27",
+            "j": 3.87,
+            "open": 1342.99,
+            "close": 1334.46,
+            "high": 1344.88,
+            "low": 1326.95
+          },
+          {
+            "date": "2026-04-28",
+            "j": 8.02,
+            "open": 1339.48,
+            "close": 1337.97,
+            "high": 1382.52,
+            "low": 1329.85
+          },
+          {
+            "date": "2026-04-29",
+            "j": 9.54,
+            "open": 1350.06,
+            "close": 1333.64,
+            "high": 1350.06,
+            "low": 1326.96
+          },
+          {
+            "date": "2026-04-30",
+            "j": 15.64,
+            "open": 1330.02,
+            "close": 1335.71,
+            "high": 1353.67,
+            "low": 1323.86
+          },
+          {
+            "date": "2026-05-04",
+            "j": 23.21,
+            "open": 1331.54,
+            "close": 1338.25,
+            "high": 1343.92,
+            "low": 1311.05
+          }
+        ]
+      },
+      "changePercent": 0.19,
+      "volumeRatio": 0.42,
+      "statusChangeDate": "2026-04-23",
+      "periodChangePercent": 0.11,
+      "rankChange": -12
+    },
+    {
+      "id": "sw801081",
+      "code": "801081.SI",
+      "name": "半导体",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 2,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "cs000941",
+      "code": "000941.SH",
+      "name": "新能源",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 3,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "cs000813",
+      "code": "000813.SH",
+      "name": "细分化工",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 4,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sw801741",
+      "code": "801741.SI",
+      "name": "商业航天",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 5,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sw801738",
+      "code": "801738.SI",
+      "name": "电网设备",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 6,
+      "duration": 3,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sw801750",
+      "code": "801750.SI",
+      "name": "通信",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 7,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sz399998",
+      "code": "399998.SZ",
+      "name": "中证煤炭",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 8,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "cs931775",
+      "code": "931775.SH",
+      "name": "房地产",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 9,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "cs000922",
+      "code": "000922.SH",
+      "name": "中证红利",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 10,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sw801735",
+      "code": "801735.SI",
+      "name": "光伏设备",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 11,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sz399975",
+      "code": "399975.SZ",
+      "name": "证券公司",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 12,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "sz399989",
+      "code": "399989.SZ",
+      "name": "中证医疗",
+      "category": "sector",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 13,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-30",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 1
+    },
+    {
+      "id": "us_soxx",
+      "code": "SOXX",
+      "name": "费城半导体",
+      "category": "overseas",
+      "currentPrice": 462.06,
+      "ma20": 420.37,
+      "threshold": 420.37,
+      "status": "YES",
+      "deviation": 9.92,
+      "strength": 1,
+      "duration": 20,
+      "updatedAt": "2026-05-04",
+      "kdj": {
+        "k": 87.5,
+        "d": 87.55,
+        "j": 87.42,
+        "jHistory": [
+          {
+            "date": "2026-03-23",
+            "j": 50.76,
+            "open": 340.12,
+            "close": 336.59,
+            "high": 344.93,
+            "low": 335.12
+          },
+          {
+            "date": "2026-03-24",
+            "j": 69.75,
+            "open": 333.79,
+            "close": 341.02,
+            "high": 343.22,
+            "low": 333.62
+          },
+          {
+            "date": "2026-03-25",
+            "j": 86.87,
+            "open": 344.17,
+            "close": 345.25,
+            "high": 347.68,
+            "low": 342.14
+          },
+          {
+            "date": "2026-03-26",
+            "j": 33.67,
+            "open": 339.45,
+            "close": 328.85,
+            "high": 339.88,
+            "low": 328.52
+          },
+          {
+            "date": "2026-03-27",
+            "j": 3.65,
+            "open": 326.84,
+            "close": 323.48,
+            "high": 329.95,
+            "low": 322.16
+          },
+          {
+            "date": "2026-03-30",
+            "j": -8.67,
+            "open": 326.75,
+            "close": 309.79,
+            "high": 327.63,
+            "low": 307.25
+          },
+          {
+            "date": "2026-03-31",
+            "j": 23.82,
+            "open": 315.6,
+            "close": 328.66,
+            "high": 329.18,
+            "low": 314.88
+          },
+          {
+            "date": "2026-04-01",
+            "j": 60.5,
+            "open": 333.49,
+            "close": 338.54,
+            "high": 342.65,
+            "low": 332.35
+          },
+          {
+            "date": "2026-04-02",
+            "j": 80.74,
+            "open": 325.11,
+            "close": 339.61,
+            "high": 340.39,
+            "low": 325.03
+          },
+          {
+            "date": "2026-04-06",
+            "j": 98.3,
+            "open": 341.52,
+            "close": 344.1,
+            "high": 345.77,
+            "low": 339.92
+          },
+          {
+            "date": "2026-04-07",
+            "j": 111.85,
+            "open": 343.04,
+            "close": 347.76,
+            "high": 347.94,
+            "low": 338.47
+          },
+          {
+            "date": "2026-04-08",
+            "j": 115.94,
+            "open": 367.89,
+            "close": 370.4,
+            "high": 371.15,
+            "low": 362.13
+          },
+          {
+            "date": "2026-04-09",
+            "j": 116.42,
+            "open": 371.3,
+            "close": 378.63,
+            "high": 378.95,
+            "low": 371.3
+          },
+          {
+            "date": "2026-04-10",
+            "j": 112.27,
+            "open": 382.67,
+            "close": 386.6,
+            "high": 389.6,
+            "low": 382.67
+          },
+          {
+            "date": "2026-04-13",
+            "j": 111.27,
+            "open": 384.88,
+            "close": 393.34,
+            "high": 393.57,
+            "low": 384.37
+          },
+          {
+            "date": "2026-04-14",
+            "j": 109.56,
+            "open": 397.83,
+            "close": 401.24,
+            "high": 401.44,
+            "low": 393.51
+          },
+          {
+            "date": "2026-04-15",
+            "j": 107.68,
+            "open": 400.31,
+            "close": 401.86,
+            "high": 402.09,
+            "low": 392.39
+          },
+          {
+            "date": "2026-04-16",
+            "j": 104.47,
+            "open": 400.6,
+            "close": 405.95,
+            "high": 407.48,
+            "low": 397.99
+          },
+          {
+            "date": "2026-04-17",
+            "j": 104.0,
+            "open": 413.38,
+            "close": 415.71,
+            "high": 415.73,
+            "low": 409.58
+          },
+          {
+            "date": "2026-04-20",
+            "j": 101.57,
+            "open": 417.43,
+            "close": 417.55,
+            "high": 418.86,
+            "low": 411.79
+          },
+          {
+            "date": "2026-04-21",
+            "j": 97.9,
+            "open": 420.4,
+            "close": 420.7,
+            "high": 423.35,
+            "low": 416.67
+          },
+          {
+            "date": "2026-04-22",
+            "j": 99.28,
+            "open": 427.26,
+            "close": 431.77,
+            "high": 432.16,
+            "low": 422.82
+          },
+          {
+            "date": "2026-04-23",
+            "j": 93.45,
+            "open": 435.34,
+            "close": 441.0,
+            "high": 446.64,
+            "low": 434.04
+          },
+          {
+            "date": "2026-04-24",
+            "j": 95.16,
+            "open": 457.59,
+            "close": 461.6,
+            "high": 463.87,
+            "low": 450.97
+          },
+          {
+            "date": "2026-04-27",
+            "j": 89.37,
+            "open": 461.75,
+            "close": 455.41,
+            "high": 463.0,
+            "low": 448.93
+          },
+          {
+            "date": "2026-04-28",
+            "j": 66.16,
+            "open": 437.62,
+            "close": 438.71,
+            "high": 446.14,
+            "low": 431.74
+          },
+          {
+            "date": "2026-04-29",
+            "j": 65.18,
+            "open": 445.26,
+            "close": 449.99,
+            "high": 450.37,
+            "low": 442.41
+          },
+          {
+            "date": "2026-04-30",
+            "j": 82.03,
+            "open": 455.69,
+            "close": 461.44,
+            "high": 462.14,
+            "low": 449.34
+          },
+          {
+            "date": "2026-05-01",
+            "j": 92.83,
+            "open": 458.47,
+            "close": 465.75,
+            "high": 466.91,
+            "low": 455.07
+          },
+          {
+            "date": "2026-05-04",
+            "j": 87.42,
+            "open": 467.93,
+            "close": 462.06,
+            "high": 469.61,
+            "low": 457.81
+          }
+        ]
+      },
+      "changePercent": -0.79,
+      "volumeRatio": 0.74,
+      "statusChangeDate": "2026-04-01",
+      "periodChangePercent": 36.49,
+      "rankChange": 0
+    },
+    {
+      "id": "global_udx",
+      "code": "UUP",
+      "name": "美元指数",
+      "category": "overseas",
+      "currentPrice": 27.48,
+      "ma20": 27.45,
+      "threshold": 27.45,
+      "status": "YES",
+      "deviation": 0.1,
+      "strength": 2,
+      "duration": 1,
+      "updatedAt": "2026-05-04",
+      "kdj": {
+        "k": 55.56,
+        "d": 59.75,
+        "j": 47.16,
+        "jHistory": [
+          {
+            "date": "2026-03-23",
+            "j": 22.3,
+            "open": 27.6,
+            "close": 27.56,
+            "high": 27.64,
+            "low": 27.48
+          },
+          {
+            "date": "2026-03-24",
+            "j": 23.44,
+            "open": 27.66,
+            "close": 27.65,
+            "high": 27.71,
+            "low": 27.58
+          },
+          {
+            "date": "2026-03-25",
+            "j": 34.78,
+            "open": 27.63,
+            "close": 27.7,
+            "high": 27.71,
+            "low": 27.63
+          },
+          {
+            "date": "2026-03-26",
+            "j": 71.21,
+            "open": 27.76,
+            "close": 27.81,
+            "high": 27.82,
+            "low": 27.72
+          },
+          {
+            "date": "2026-03-27",
+            "j": 90.04,
+            "open": 27.83,
+            "close": 27.84,
+            "high": 27.88,
+            "low": 27.77
+          },
+          {
+            "date": "2026-03-30",
+            "j": 103.18,
+            "open": 27.91,
+            "close": 27.98,
+            "high": 28.0,
+            "low": 27.91
+          },
+          {
+            "date": "2026-03-31",
+            "j": 78.33,
+            "open": 27.85,
+            "close": 27.78,
+            "high": 27.89,
+            "low": 27.77
+          },
+          {
+            "date": "2026-04-01",
+            "j": 57.51,
+            "open": 27.67,
+            "close": 27.73,
+            "high": 27.74,
+            "low": 27.62
+          },
+          {
+            "date": "2026-04-02",
+            "j": 66.66,
+            "open": 27.85,
+            "close": 27.86,
+            "high": 27.89,
+            "low": 27.78
+          },
+          {
+            "date": "2026-04-06",
+            "j": 60.89,
+            "open": 27.81,
+            "close": 27.83,
+            "high": 27.87,
+            "low": 27.77
+          },
+          {
+            "date": "2026-04-07",
+            "j": 37.81,
+            "open": 27.83,
+            "close": 27.75,
+            "high": 27.84,
+            "low": 27.73
+          },
+          {
+            "date": "2026-04-08",
+            "j": 12.44,
+            "open": 27.45,
+            "close": 27.53,
+            "high": 27.61,
+            "low": 27.45
+          },
+          {
+            "date": "2026-04-09",
+            "j": -4.36,
+            "open": 27.51,
+            "close": 27.48,
+            "high": 27.56,
+            "low": 27.44
+          },
+          {
+            "date": "2026-04-10",
+            "j": -13.42,
+            "open": 27.42,
+            "close": 27.44,
+            "high": 27.49,
+            "low": 27.42
+          },
+          {
+            "date": "2026-04-13",
+            "j": -18.26,
+            "open": 27.54,
+            "close": 27.38,
+            "high": 27.54,
+            "low": 27.38
+          },
+          {
+            "date": "2026-04-14",
+            "j": -12.1,
+            "open": 27.3,
+            "close": 27.32,
+            "high": 27.32,
+            "low": 27.27
+          },
+          {
+            "date": "2026-04-15",
+            "j": -10.89,
+            "open": 27.31,
+            "close": 27.29,
+            "high": 27.34,
+            "low": 27.28
+          },
+          {
+            "date": "2026-04-16",
+            "j": 1.67,
+            "open": 27.34,
+            "close": 27.37,
+            "high": 27.38,
+            "low": 27.33
+          },
+          {
+            "date": "2026-04-17",
+            "j": 15.4,
+            "open": 27.24,
+            "close": 27.36,
+            "high": 27.36,
+            "low": 27.2
+          },
+          {
+            "date": "2026-04-20",
+            "j": 25.89,
+            "open": 27.35,
+            "close": 27.32,
+            "high": 27.38,
+            "low": 27.3
+          },
+          {
+            "date": "2026-04-21",
+            "j": 66.51,
+            "open": 27.35,
+            "close": 27.47,
+            "high": 27.47,
+            "low": 27.34
+          },
+          {
+            "date": "2026-04-22",
+            "j": 91.21,
+            "open": 27.44,
+            "close": 27.48,
+            "high": 27.49,
+            "low": 27.4
+          },
+          {
+            "date": "2026-04-23",
+            "j": 105.15,
+            "open": 27.53,
+            "close": 27.53,
+            "high": 27.58,
+            "low": 27.46
+          },
+          {
+            "date": "2026-04-24",
+            "j": 99.07,
+            "open": 27.5,
+            "close": 27.48,
+            "high": 27.52,
+            "low": 27.45
+          },
+          {
+            "date": "2026-04-27",
+            "j": 87.42,
+            "open": 27.41,
+            "close": 27.45,
+            "high": 27.46,
+            "low": 27.39
+          },
+          {
+            "date": "2026-04-28",
+            "j": 96.37,
+            "open": 27.53,
+            "close": 27.53,
+            "high": 27.55,
+            "low": 27.49
+          },
+          {
+            "date": "2026-04-29",
+            "j": 105.52,
+            "open": 27.56,
+            "close": 27.61,
+            "high": 27.63,
+            "low": 27.55
+          },
+          {
+            "date": "2026-04-30",
+            "j": 48.44,
+            "open": 27.48,
+            "close": 27.36,
+            "high": 27.5,
+            "low": 27.34
+          },
+          {
+            "date": "2026-05-01",
+            "j": 37.1,
+            "open": 27.33,
+            "close": 27.41,
+            "high": 27.42,
+            "low": 27.26
+          },
+          {
+            "date": "2026-05-04",
+            "j": 47.16,
+            "open": 27.43,
+            "close": 27.48,
+            "high": 27.5,
+            "low": 27.42
+          }
+        ]
+      },
+      "changePercent": 0.26,
+      "volumeRatio": 0.69,
+      "statusChangeDate": "2026-05-04",
+      "periodChangePercent": 0.0,
+      "rankChange": 0
+    },
+    {
+      "id": "global_ndx",
+      "code": "COMP",
+      "name": "纳斯达克",
+      "category": "overseas",
+      "currentPrice": 7.06,
+      "ma20": 7.53,
+      "threshold": 7.53,
+      "status": "NO",
+      "deviation": -6.19,
+      "strength": 3,
+      "duration": 2,
+      "updatedAt": "2026-05-04",
+      "kdj": {
+        "k": 18.28,
+        "d": 35.94,
+        "j": -17.04,
+        "jHistory": [
+          {
+            "date": "2026-03-23",
+            "j": 48.45,
+            "open": 8.01,
+            "close": 8.47,
+            "high": 8.53,
+            "low": 8.0
+          },
+          {
+            "date": "2026-03-24",
+            "j": 54.0,
+            "open": 8.35,
+            "close": 8.1,
+            "high": 8.35,
+            "low": 7.97
+          },
+          {
+            "date": "2026-03-25",
+            "j": 41.22,
+            "open": 8.26,
+            "close": 7.92,
+            "high": 8.3,
+            "low": 7.68
+          },
+          {
+            "date": "2026-03-26",
+            "j": 16.98,
+            "open": 7.84,
+            "close": 7.62,
+            "high": 8.17,
+            "low": 7.57
+          },
+          {
+            "date": "2026-03-27",
+            "j": 2.68,
+            "open": 7.56,
+            "close": 7.08,
+            "high": 7.56,
+            "low": 7.05
+          },
+          {
+            "date": "2026-03-30",
+            "j": -4.77,
+            "open": 7.16,
+            "close": 6.84,
+            "high": 7.19,
+            "low": 6.83
+          },
+          {
+            "date": "2026-03-31",
+            "j": 14.08,
+            "open": 7.03,
+            "close": 7.31,
+            "high": 7.38,
+            "low": 6.99
+          },
+          {
+            "date": "2026-04-01",
+            "j": 18.08,
+            "open": 7.35,
+            "close": 7.18,
+            "high": 7.47,
+            "low": 7.08
+          },
+          {
+            "date": "2026-04-02",
+            "j": 15.09,
+            "open": 6.95,
+            "close": 7.07,
+            "high": 7.29,
+            "low": 6.85
+          },
+          {
+            "date": "2026-04-06",
+            "j": 4.13,
+            "open": 6.98,
+            "close": 6.8,
+            "high": 7.07,
+            "low": 6.77
+          },
+          {
+            "date": "2026-04-07",
+            "j": 10.02,
+            "open": 6.67,
+            "close": 6.68,
+            "high": 6.72,
+            "low": 6.37
+          },
+          {
+            "date": "2026-04-08",
+            "j": 47.05,
+            "open": 7.34,
+            "close": 7.44,
+            "high": 7.57,
+            "low": 7.26
+          },
+          {
+            "date": "2026-04-09",
+            "j": 74.63,
+            "open": 7.34,
+            "close": 7.23,
+            "high": 7.51,
+            "low": 7.02
+          },
+          {
+            "date": "2026-04-10",
+            "j": 80.73,
+            "open": 7.22,
+            "close": 7.14,
+            "high": 7.26,
+            "low": 6.95
+          },
+          {
+            "date": "2026-04-13",
+            "j": 80.98,
+            "open": 7.03,
+            "close": 7.13,
+            "high": 7.16,
+            "low": 6.92
+          },
+          {
+            "date": "2026-04-14",
+            "j": 76.56,
+            "open": 7.17,
+            "close": 7.09,
+            "high": 7.54,
+            "low": 7.08
+          },
+          {
+            "date": "2026-04-15",
+            "j": 85.15,
+            "open": 7.15,
+            "close": 7.28,
+            "high": 7.43,
+            "low": 7.01
+          },
+          {
+            "date": "2026-04-16",
+            "j": 89.27,
+            "open": 7.37,
+            "close": 7.3,
+            "high": 7.54,
+            "low": 7.25
+          },
+          {
+            "date": "2026-04-17",
+            "j": 103.31,
+            "open": 7.63,
+            "close": 8.14,
+            "high": 8.23,
+            "low": 7.62
+          },
+          {
+            "date": "2026-04-20",
+            "j": 103.5,
+            "open": 8.01,
+            "close": 8.08,
+            "high": 8.13,
+            "low": 7.92
+          },
+          {
+            "date": "2026-04-21",
+            "j": 82.55,
+            "open": 8.14,
+            "close": 7.83,
+            "high": 8.35,
+            "low": 7.8
+          },
+          {
+            "date": "2026-04-22",
+            "j": 75.49,
+            "open": 8.04,
+            "close": 7.91,
+            "high": 8.11,
+            "low": 7.8
+          },
+          {
+            "date": "2026-04-23",
+            "j": 65.13,
+            "open": 7.79,
+            "close": 7.79,
+            "high": 7.9,
+            "low": 7.52
+          },
+          {
+            "date": "2026-04-24",
+            "j": 61.37,
+            "open": 7.75,
+            "close": 7.85,
+            "high": 7.88,
+            "low": 7.71
+          },
+          {
+            "date": "2026-04-27",
+            "j": 73.82,
+            "open": 7.79,
+            "close": 8.09,
+            "high": 8.14,
+            "low": 7.79
+          },
+          {
+            "date": "2026-04-28",
+            "j": 62.72,
+            "open": 8.12,
+            "close": 7.89,
+            "high": 8.3,
+            "low": 7.84
+          },
+          {
+            "date": "2026-04-29",
+            "j": 22.21,
+            "open": 7.79,
+            "close": 7.62,
+            "high": 7.92,
+            "low": 7.51
+          },
+          {
+            "date": "2026-04-30",
+            "j": 4.85,
+            "open": 7.54,
+            "close": 7.57,
+            "high": 7.66,
+            "low": 7.43
+          },
+          {
+            "date": "2026-05-01",
+            "j": -11.97,
+            "open": 7.66,
+            "close": 7.39,
+            "high": 7.78,
+            "low": 7.37
+          },
+          {
+            "date": "2026-05-04",
+            "j": -17.04,
+            "open": 7.32,
+            "close": 7.06,
+            "high": 7.47,
+            "low": 7.02
+          }
+        ]
+      },
+      "changePercent": -4.47,
+      "volumeRatio": 1.2,
+      "statusChangeDate": "2026-05-01",
+      "periodChangePercent": -4.47,
+      "rankChange": 0
+    },
+    {
+      "id": "sge_au",
+      "code": "SGE-AU",
+      "name": "黄金",
+      "category": "overseas",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 4,
+      "duration": 8,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-29",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    },
+    {
+      "id": "sge_ag",
+      "code": "SGE-AG",
+      "name": "白银",
+      "category": "overseas",
+      "currentPrice": 0,
+      "ma20": 0,
+      "threshold": 0,
+      "status": "NO",
+      "deviation": 0,
+      "strength": 5,
+      "duration": 8,
+      "updatedAt": "2026-05-04",
+      "fetchFailed": true,
+      "fetchFailReason": "数据停留在 2026-04-29",
+      "kdj": {
+        "k": null,
+        "d": null,
+        "j": null,
+        "jHistory": []
+      },
+      "changePercent": null,
+      "volumeRatio": null,
+      "statusChangeDate": null,
+      "periodChangePercent": null,
+      "rankChange": 0
+    }
+  ]
+}

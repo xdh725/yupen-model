@@ -38,6 +38,87 @@ function readRequestBody(req: NodeJS.ReadableStream): Promise<string> {
   });
 }
 
+// ─── 定时快照生成器 ────────────────────────────────────────────────
+// 每日 19:00 自动执行快照生成（与 crontab 一致）
+function startSnapshotScheduler(
+  server: Parameters<NonNullable<Plugin['configureServer']>>[0],
+  log: { info: (msg: string) => void; warn: (msg: string) => void; error: (msg: string) => void },
+) {
+  const ROOT = resolve(__dirname, '..');
+  const SCHEDULE_HOUR = 19; // 19:00 (武汉时间)
+  const SCHEDULE_MINUTE = 0;
+  const CHECK_INTERVAL_MS = 60_000; // 每分钟检查一次
+
+  let lastRunDate: string | null = null;
+
+  const timer = setInterval(() => {
+    const now = new Date();
+    // 武汉时间 (UTC+8)
+    const wuhanHour = now.getUTCHours() + 8 >= 24 ? now.getUTCHours() + 8 - 24 : now.getUTCHours() + 8;
+    const wuhanMinute = now.getUTCMinutes();
+    const today = (() => {
+      const d = new Date(now.getTime() + 8 * 3600_000);
+      return d.toISOString().split('T')[0];
+    })();
+
+    if (wuhanHour === SCHEDULE_HOUR && wuhanMinute === SCHEDULE_MINUTE && lastRunDate !== today) {
+      lastRunDate = today;
+
+      // 检查是否已有快照
+      const manifestPath = resolve(ROOT, 'web/public/data/manifest.json');
+      if (existsSync(manifestPath)) {
+        try {
+          const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+          if (manifest.latest === today) {
+            log.info(`⏰ [scheduler] 今天 (${today}) 的快照已存在，跳过定时生成`);
+            return;
+          }
+        } catch {
+          // ignore parse error, proceed
+        }
+      }
+
+      const scriptPath = resolve(ROOT, 'scripts/generate_daily_yupen_snapshot.py');
+      const startedAt = Date.now();
+      log.info(`⏰ [scheduler] 定时触发快照生成 (19:00 武汉时间, 含补缺) ...`);
+
+      execFile('python3', [scriptPath, '--fill-gaps'], { timeout: 600_000 }, (error, stdout, stderr) => {
+        const elapsedSec = ((Date.now() - startedAt) / 1000).toFixed(1);
+
+        if (stdout) {
+          for (const line of stdout.trim().split('\n')) {
+            if (line.includes('❌') || line.includes('Error') || line.includes('error')) {
+              log.error(`   ${line}`);
+            } else if (line.includes('⚠️') || line.includes('Warning')) {
+              log.warn(`   ${line}`);
+            } else {
+              log.info(`   ${line}`);
+            }
+          }
+        }
+        if (stderr) {
+          for (const line of stderr.trim().split('\n')) {
+            log.error(`   [stderr] ${line}`);
+          }
+        }
+
+        if (error) {
+          log.error(`❌ [scheduler] 定时生成失败 (${elapsedSec}s): ${error.message}`);
+        } else {
+          log.info(`✅ [scheduler] 定时生成完成 (${elapsedSec}s)`);
+        }
+      });
+    }
+  }, CHECK_INTERVAL_MS);
+
+  // dev server 关闭时清理定时器
+  server.httpServer?.on('close', () => {
+    clearInterval(timer);
+  });
+
+  log.info(`⏰ [scheduler] 定时任务已启动: 每日 19:00 (武汉时间) 自动生成快照`);
+}
+
 export function snapshotApiPlugin(): Plugin {
   return {
     name: 'snapshot-api',
@@ -56,6 +137,9 @@ export function snapshotApiPlugin(): Plugin {
           server.config.logger.error(`\x1b[31m[${ts}]\x1b[0m ${msg}`);
         },
       };
+
+      // 启动定时任务
+      startSnapshotScheduler(server, log);
 
       server.middlewares.use('/api/index-table-widths', async (req, res) => {
         const url = new URL(req.url ?? '', 'http://localhost');
@@ -142,9 +226,9 @@ export function snapshotApiPlugin(): Plugin {
         if (!marketClosed) {
           log.warn(`🔄 [refresh-snapshot] 注意: 当前 ${hour}:${String(now.getMinutes()).padStart(2, '0')} 尚未收盘，数据可能不完整`);
         }
-        log.info(`🔄 [refresh-snapshot] 开始执行 python3 scripts/generate_daily_yupen_snapshot.py ...`);
+        log.info(`🔄 [refresh-snapshot] 开始执行 python3 scripts/generate_daily_yupen_snapshot.py --fill-gaps ...`);
 
-        execFile('python3', [scriptPath], { timeout: 300_000 }, (error, stdout, stderr) => {
+        execFile('python3', [scriptPath, '--fill-gaps'], { timeout: 600_000 }, (error, stdout, stderr) => {
           res.setHeader('Content-Type', 'application/json');
           const elapsedMs = Date.now() - startedAt;
           const elapsedSec = (elapsedMs / 1000).toFixed(1);
@@ -168,7 +252,7 @@ export function snapshotApiPlugin(): Plugin {
           }
 
           const debugLog = {
-            command: `python3 ${scriptPath}`,
+            command: `python3 ${scriptPath} --fill-gaps`,
             startedAt: new Date(startedAt).toISOString(),
             elapsedMs,
             stdout: stdout ?? '',

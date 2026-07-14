@@ -29,6 +29,8 @@ export interface IndexData {
   statusChangeDate?: string | null;    // 状态转变日期
   periodChangePercent?: number | null; // 区间涨幅(从状态转变开始)
   rankChange?: number;                 // 排序变化(与上一日对比, 负=上升)
+  fetchFailed?: boolean;               // 数据获取失败标记
+  fetchFailReason?: string;            // 失败原因
 }
 
 export interface HistoryData {

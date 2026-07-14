@@ -179,10 +179,11 @@ export function IndexTable({ indices, onDelete }: IndexTableProps) {
         </TableHeader>
         <TableBody>
           {indices.map((idx) => {
+            const failed = idx.fetchFailed === true;
             return (
-              <TableRow key={idx.id} className="text-sm">
+              <TableRow key={idx.id} className={`text-sm${failed ? ' opacity-60' : ''}`}>
                 <TableCell className="text-center text-muted-foreground text-xs">
-                  {idx.strength <= 3 ? (
+                  {failed ? '-' : idx.strength <= 3 ? (
                     <span className={idx.strength === 1 ? 'text-yellow-500 font-bold' : idx.strength === 2 ? 'text-gray-400' : 'text-amber-600'}>
                       {idx.strength}
                     </span>
@@ -192,6 +193,14 @@ export function IndexTable({ indices, onDelete }: IndexTableProps) {
                   <span className="font-medium truncate block">{idx.name}</span>
                   <span className="text-muted-foreground text-xs ml-1">{idx.code}</span>
                 </TableCell>
+                {failed ? (
+                  <>
+                    <TableCell colSpan={10} className="text-center text-xs text-red-500">
+                      数据获取失败{idx.fetchFailReason ? ` (${idx.fetchFailReason})` : ''}
+                    </TableCell>
+                  </>
+                ) : (
+                  <>
                 <TableCell className="text-center">
                   <span className={`text-xs font-bold ${idx.status === 'YES' ? 'text-green-600' : 'text-red-600'}`}>
                     {idx.status}
@@ -244,6 +253,8 @@ export function IndexTable({ indices, onDelete }: IndexTableProps) {
                     <span className="text-muted-foreground text-xs">-</span>
                   )}
                 </TableCell>
+                  </>
+                )}
                 {onDelete && (
                   <TableCell>
                     <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => onDelete(idx.id)}>
